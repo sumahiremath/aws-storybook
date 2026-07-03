@@ -1,6 +1,6 @@
 # License
 
-Copyright © Suma
+Copyright © Suma Manjunath
 
 This repository contains original learning notes, explanations, analogies, mental models, and written educational material.
 
