@@ -21,3 +21,11 @@ These notes are not official AWS documentation and are not a replacement for han
 ## Guiding idea
 
 A good explanation should make the concept easier to retell.
+
+## License
+
+Written content in this repository is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International.
+
+Commercial reuse is not permitted without permission.
+
+See [LICENSE.md](./LICENSE.md) for details.
