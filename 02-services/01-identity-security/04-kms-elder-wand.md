@@ -438,9 +438,9 @@ It is not a junk drawer with velvet lining.
 
 # Painkiller
 
-> Problem: Applications need to encrypt, decrypt, sign, and verify data without spreading raw cryptographic keys everywhere.  
-> Pain: If access depends on who has a copy of the key, the key eventually leaks, rotation becomes chaos, revocation becomes impossible, and auditing breaks.  
-> AWS Solution: Use KMS. Keep cryptographic keys protected inside AWS KMS, allow only trusted principals to ask for specific operations, use data keys for envelope encryption, and audit every spell the wand casts.
+> **Problem**: Applications need to encrypt, decrypt, sign, and verify data without spreading raw cryptographic keys everywhere.  
+> **Pain**: If access depends on who has a copy of the key, the key eventually leaks, rotation becomes chaos, revocation becomes impossible, and auditing breaks.  
+> **AWS Solution**: Use KMS. Keep cryptographic keys protected inside AWS KMS, allow only trusted principals to ask for specific operations, use data keys for envelope encryption, and audit every spell the wand casts.
 
 ---
 

@@ -478,7 +478,9 @@ Your app still owns behavior.
 
 # Painkiller
 
-> Problem: A tiny dev team wants users to sign up, sign in, reset passwords, use MFA, and maybe log in with Google or Apple. Pain: Building secure user identity from scratch turns the roadmap into a swamp. AWS Solution: Use Cognito. User Pools manage app-user authentication. Identity Pools can exchange trusted identities for temporary AWS credentials. IAM decides what those credentials can access.
+> **Problem**: A tiny dev team wants users to sign up, sign in, reset passwords, use MFA, and maybe log in with Google or Apple. 
+> **Pain**: Building secure user identity from scratch turns the roadmap into a swamp. 
+> **AWS Solution**: Use Cognito. User Pools manage app-user authentication. Identity Pools can exchange trusted identities for temporary AWS credentials. IAM decides what those credentials can access.
 
 ---
 

@@ -487,9 +487,9 @@ flowchart TD
 
 # Painkiller
 
-> Problem: AWS access decisions involve identities, roles, policies, resources, and organization-level guardrails.  
-> Pain: Memorizing IAM diagrams makes everything blur together, especially in cross-account and assumed-role scenarios.  
-> AWS Solution: Think in layers. Identify the principal, the cape being worn, the powers attached to it, the limits around it, the resource’s own rules, and any explicit deny.
+> **Problem**: AWS access decisions involve identities, roles, policies, resources, and organization-level guardrails.  
+> **Pain**: Memorizing IAM diagrams makes everything blur together, especially in cross-account and assumed-role scenarios.  
+> **AWS Solution**: Think in layers. Identify the principal, the cape being worn, the powers attached to it, the limits around it, the resource’s own rules, and any explicit deny.
 
 ---
 
