@@ -1,4 +1,4 @@
-	## Stop Hiring People to Wait
+## Stop Hiring People to Wait
 
 ### The Pain
 

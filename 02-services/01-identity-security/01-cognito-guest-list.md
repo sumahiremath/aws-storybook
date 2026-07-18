@@ -170,23 +170,16 @@ It answers the question:
 > Who are you?
 
 Are you registered?
-
 Did you enter the correct password?
-
 Did you verify your email?
-
 Did you pass MFA?
-
 Did you sign in through Google, Apple, Facebook, SAML, or another identity provider?
 
 Once the user signs in successfully, Cognito gives the app tokens.
 
 Those tokens are not decorative stickers.
-
 They are proof.
-
 They tell the app:
-
 “This user authenticated successfully.”
 
 That is why User Pools belong in the authentication bucket.
@@ -240,9 +233,7 @@ It does not let you operate the lighting rig, open the safe, or drive the tour b
 Sometimes your app user needs to touch AWS resources directly.
 
 Maybe they need to upload a profile picture to S3.
-
 Maybe they need access to a specific protected asset.
-
 Maybe a mobile app needs temporary credentials so it can call an AWS service safely.
 
 You do not give the user long-term AWS keys.
@@ -252,11 +243,9 @@ That would be architectural clown shoes.
 Instead, Identity Pools can exchange a trusted identity for temporary, limited-privilege AWS credentials.
 
 User Pool:
-
 > Who are you?
 
 Identity Pool:
-
 > Now that we know who you are, can you receive a temporary AWS badge?
 
 AWS documentation describes identity pools as issuing temporary AWS credentials for authenticated or anonymous users, with permissions controlled through IAM roles and policies.
@@ -278,11 +267,8 @@ IAM defines what the temporary credentials are allowed to do.
 For example:
 
 - Upload only to `s3://my-app-users/${userId}/profile-photo.jpg`
-    
 - Read only the user’s own protected assets
-    
 - Call only specific AWS APIs
-    
 - Use different access based on user group or attributes
     
 
@@ -307,19 +293,14 @@ When you connect a User Pool to an Identity Pool, the app can exchange User Pool
 ## The Login Desk You Did Not Have to Build
 
 A tiny team can build its own login screens.
-
 It can also build its own chair.
-
 That does not mean it should.
 
 Cognito Hosted UI gives you managed sign-up and sign-in pages.
 
 Not always the prettiest ballroom in the kingdom.
-
 But functional.
-
 Useful.
-
 Exam-relevant.
 
 It lets the app redirect users to a managed login experience instead of building every login surface from scratch.
@@ -327,17 +308,11 @@ It lets the app redirect users to a managed login experience instead of building
 This matters because authentication is not just a form.
 
 It is flows.
-
 Redirects.
-
 Callbacks.
-
 Tokens.
-
 Federation.
-
 Security settings.
-
 Logout behavior.
 
 Hosted UI says:
@@ -353,9 +328,7 @@ Hosted UI says:
 Some users do not want another password.
 
 They already have Google.
-
 They already have Apple.
-
 They already have Facebook.
 
 Some companies already have SAML or OIDC identity providers.
@@ -365,7 +338,6 @@ Cognito can integrate with external identity providers so users can sign in thro
 In story terms:
 
 The guest does not always need a brand-new invitation printed by your company.
-
 Sometimes they arrive with a trusted invitation from another house.
 
 Cognito checks whether that invitation is acceptable.
@@ -387,11 +359,8 @@ Cognito can let users authenticate through outside identity providers, but your 
 Not every signed-in user gets the same app experience.
 
 An admin sees more.
-
 A regular user sees less.
-
 A premium user sees paid features.
-
 A support user may need access to tools customers never see.
 
 Cognito User Pool groups can help organize users.
@@ -401,44 +370,7 @@ Groups are not the whole authorization universe, but they give your app a clean 
 The story version:
 
 Everyone may be on the guest list.
-
 But not everyone is invited into the wine cellar.
-
----
-
-# The Exam Trap
-
-## Logged In Does Not Mean AWS Access
-
-This is the part to tattoo onto the exam brain.
-
-A user can be authenticated and still have no AWS credentials.
-
-A user can sign in through a User Pool and receive tokens.
-
-That does not automatically mean the user can access S3, DynamoDB, or other AWS services.
-
-For AWS resource access, you need Identity Pools and IAM roles.
-
-So when the exam asks:
-
-“How do app users sign up and sign in?”
-
-Think User Pool.
-
-When the exam asks:
-
-“How do authenticated or guest users receive temporary AWS credentials to access AWS resources?”
-
-Think Identity Pool.
-
-When the exam asks:
-
-“What are those temporary credentials allowed to do?”
-
-Think IAM role and policy.
-
-Do not let the answer choices shove all three into one trench coat.
 
 ---
 
@@ -447,25 +379,19 @@ Do not let the answer choices shove all three into one trench coat.
 Cognito welcomes app users.
 
 It helps your app know who they are.
-
 It can help exchange that identity for temporary AWS credentials when needed.
 
 But Cognito is not your entire security model.
 
 It does not replace IAM.
-
 It does not replace fine-grained application authorization.
-
 It does not decide every business rule inside your app.
-
 If your app says only account owners can view billing history, your app still needs to enforce that properly.
 
 Cognito can tell you:
-
 “This is Suma.”
 
 Your app must still decide:
-
 “What is Suma allowed to do inside this product?”
 
 That is the line.
@@ -489,19 +415,12 @@ Your app still owns behavior.
 Without Cognito...
 
 Every small app team becomes an identity team.
-
 They build password reset.
-
 They store credentials.
-
 They wire MFA.
-
 They handle social login.
-
 They debug token expiration.
-
 They manage account recovery.
-
 They accidentally create security problems while trying to ship product features.
 
 That is not the best use of a tiny team.
@@ -509,11 +428,9 @@ That is not the best use of a tiny team.
 AWS built Cognito so application teams could add user identity without building the whole identity machine themselves.
 
 The point is not glamour.
-
 The point is relief.
 
 Your users need a front door.
-
 Your developers need their roadmap back.
 
 That is Amazon Cognito.
