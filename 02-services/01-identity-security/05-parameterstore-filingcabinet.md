@@ -1,6 +1,6 @@
 # Parameter Store = The Filing Cabinet
 
-## Every Office Has One
+### Every Office Has One
 
 Walk into any well-run office.
 
@@ -40,7 +40,7 @@ Applications need exactly the same thing.
 
 ---
 
-# Meet the Filing Cabinet
+## Meet the Filing Cabinet
 
 A filing cabinet doesn't make decisions.
 
@@ -76,7 +76,7 @@ EC2 --> PS
 
 ---
 
-# Every Drawer Has A Label
+## Every Drawer Has a Label
 
 Imagine opening the cabinet.
 
@@ -111,7 +111,7 @@ Hierarchies make thousands of parameters manageable.
 
 ---
 
-# Some Drawers Have Locks
+## Some Drawers Have Locks
 
 Not every document belongs in plain sight.
 
@@ -130,7 +130,7 @@ The lock simply protects it.
 
 ---
 
-# Replacing The Paper
+## Replacing the Paper
 
 Suppose the database moves.
 
@@ -159,7 +159,7 @@ The value evolves.
 
 ---
 
-# Reading The Whole Drawer
+## Reading the Whole Drawer
 
 Imagine preparing a new office.
 
@@ -181,7 +181,7 @@ The organization becomes the interface.
 
 ---
 
-# Everyone Reads The Same Cabinet
+## Everyone Reads The Same Cabinet
 
 Developers.
 Lambda functions.
@@ -200,7 +200,7 @@ Everyone reads from the same place.
 
 ---
 
-# The Cabinet Doesn't Care
+## The Cabinet Doesn't Care
 
 Notice something.
 
@@ -224,7 +224,7 @@ That's someone else's job.
 
 ---
 
-# Painkiller
+## Painkiller
 
 > **Problem:** Applications need configuration that changes between environments without changing the code.
 > **Pain:** Hardcoded values become impossible to update, organize, or share safely.
@@ -232,7 +232,7 @@ That's someone else's job.
 
 ---
 
-# Why AWS Built Parameter Store
+## Why AWS Built Parameter Store
 
 Before Parameter Store...
 
@@ -253,7 +253,7 @@ Because organizing them consistently is.
 
 ---
 
-# The Filing Cabinet Never Leaves Its Desk
+## The Filing Cabinet Never Leaves Its Desk
 
 The filing cabinet has one job.
 
@@ -269,9 +269,9 @@ That simplicity is exactly why it's useful.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 | In the story                 | In Parameter Store  | What it actually means                                            |
 | ---------------------------- | ------------------- | ----------------------------------------------------------------- |
@@ -290,7 +290,7 @@ Nobody hardcoded configuration into the application.
 
 ---
 
-# A Note From The Author
+## A Note From the Author
 
 The filing cabinet deliberately simplifies a few things.
 

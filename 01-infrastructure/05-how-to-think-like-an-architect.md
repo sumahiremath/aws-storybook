@@ -1,3 +1,5 @@
+# How to Think Like an Architect
+
 ## The Pain
 
 The first time people open the AWS Console, they see hundreds of services.
@@ -137,7 +139,7 @@ People must reach your application.
 
 ↓
 
-Route53
+Route 53
 
 CloudFront
 
@@ -160,6 +162,14 @@ IAM
 Cognito
 
 STS
+
+---
+
+### Need security, cryptography, or secrets?
+
+Data and credentials must be protected.
+
+↓
 
 KMS
 
@@ -184,6 +194,8 @@ Does something happen because of an event?
 Does this need to run continuously?
 
 Where is the bottleneck?
+
+What are the cost, latency, durability, scale, compliance, and operational ownership requirements?
 
 ---
 

@@ -1,6 +1,6 @@
 # EventBridge = Lady Whistledown
 
-## A Ball is Never Just a Ball
+### A Ball is Never Just a Ball
 
 Tonight, the Queen hosts the grandest ball of the season.
 
@@ -45,7 +45,7 @@ But how?
 
 ---
 
-# Meet Lady Whistledown
+## Meet Lady Whistledown
 
 Lady Whistledown doesn't create the news.
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ---
 
-# Every Whisper is an Event
+## Every Whisper is an Event
 
 An event is nothing more than something that happened.
 
@@ -114,7 +114,7 @@ That's the first thing worth locking in: an event is a fact, not a command. The 
 
 ---
 
-# The Producers
+## The Producers
 
 Every person in the kingdom can generate news.
 
@@ -134,7 +134,7 @@ They never wonder who heard it. They don't know, and they don't need to. That's 
 
 ---
 
-# The Event Bus
+## The Event Bus
 
 Lady Whistledown hears everything.
 
@@ -146,9 +146,9 @@ This is the piece that makes the rest possible: one central place every event fl
 
 ---
 
-# Event Patterns
+## Event Patterns
 
-## Her Editorial Rules
+### Her Editorial Rules
 
 Lady Whistledown never publishes everything to everyone.
 
@@ -168,9 +168,9 @@ Those editorial decisions are EventBridge **Rules**, and the criteria she checks
 
 ---
 
-# Targets
+## Targets
 
-## The Audience
+### The Audience
 
 Every family listens for different kinds of news.
 
@@ -182,9 +182,9 @@ Each of these is a **Target** — Lambda, SNS, SQS, Step Functions, another serv
 
 ---
 
-# Archive & Replay
+## Archive & Replay
 
-## The Standing Order to Reprint
+### The Standing Order to Reprint
 
 Every edition of Lady Whistledown's paper is preserved.
 
@@ -200,9 +200,9 @@ The story stays the same. The audience doesn't have to.
 
 ---
 
-# Schema Registry
+## Schema Registry
 
-## The Society Column's House Style
+### The Society Column's House Style
 
 Good society follows etiquette. Announcements have structure — who, what, where, when.
 
@@ -212,9 +212,9 @@ That's the Schema Registry's real trick: EventBridge can **infer the schema dire
 
 ---
 
-# EventBridge Pipes
+## EventBridge Pipes
 
-## The Courier Who Doesn't Work for the Newspaper
+### The Courier Who Doesn't Work for the Newspaper
 
 Here's where it's easy to get the wrong idea. Pipes can look like "a private version of the newspaper" — a whisper that skips the presses and goes straight to one recipient. It isn't quite that.
 
@@ -230,7 +230,7 @@ So the real distinction isn't "public newspaper vs. private letter." It's this: 
 
 ---
 
-# She Reports. She Doesn't Command.
+## She Reports. She Doesn't Command.
 
 Notice something Lady Whistledown never once does across an entire season of gossip.
 
@@ -244,17 +244,19 @@ That's the whole philosophy of event-driven architecture, and it's worth holding
 
 A command has an obligation baked in — someone asked, someone must answer, and if nobody's there to answer, that's a failure. A fact has no such obligation. If nobody reacts to "the Duke proposed," nothing has gone wrong. The news was still true. It simply wasn't anyone's problem to solve.
 
-That's why a Target going quiet for an hour doesn't take down the ballroom. Nobody was owed a response in the first place.
+That's why a target going quiet for an hour does not synchronously take down the ballroom. EventBridge retries failed delivery according to its retry policy; exhausted events should be captured with a dead-letter queue so they are not silently lost.
 
 ---
 
-# Painkiller
+## Painkiller
 
-> **Problem:** Every application wants to tell every other application that something happened. **Pain:** Direct connections become impossible to manage. **AWS Solution:** Introduce Lady Whistledown. Everyone whispers once. She delivers the news to exactly the people who can act on it.
+> **Problem:** Applications need to announce that something happened.
+> **Pain:** Direct connections between every producer and consumer become difficult to manage.
+> **AWS solution:** Publish an event once and use EventBridge rules to route it to matching targets.
 
 ---
 
-# Why AWS Built EventBridge
+## Why AWS Built EventBridge
 
 Without Lady Whistledown...
 
@@ -268,9 +270,9 @@ That's loose coupling. That's event-driven architecture. That's Amazon EventBrid
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 Strip away the ball, and here's the newsroom you were really looking at:
 
@@ -290,13 +292,15 @@ Everyone whispered once. Lady Whistledown kept the kingdom synchronized.
 
 ---
 
-# A Note From the Author
+## A Note From the Author
 
 _Lady Whistledown was always the one narrator willing to step outside her own story and tell you the truth directly. So, in her tradition — three places where the ballroom simplifies something real:_
 
 **Ordering isn't guaranteed.** The story tells events in sequence, one after another. EventBridge makes no promise that targets receive events in the order they occurred. If your system needs strict ordering, that's a design decision you make on top of EventBridge — not something the bus hands you for free.
 
 **Delivery is at-least-once, not exactly-once.** The story implies one whisper reaches one household exactly one time. In reality, a target can receive the same event more than once. Targets need to be able to handle that without breaking — idempotency isn't optional, it's assumed.
+
+**Targets can fail.** EventBridge retries target delivery, but retries eventually end. Production designs should configure retry behavior, monitoring, and a dead-letter queue where supported.
 
 **Not every rule reacts to a whisper.** Everything in this story starts with something happening. But EventBridge also supports Scheduled Rules — rules that fire on a timer, whether or not any event occurred at all. There's no ballroom equivalent of "check the treasury every Sunday at noon, whisper or no whisper." That's a real gap in the metaphor, not a simplification of one — the story's premise is reactive, and this feature isn't.
 

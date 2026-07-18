@@ -1,6 +1,6 @@
 # Cognito = The Tiny Company’s Guest List
 
-## Your App Was Not Supposed to Become a Login Factory
+### Your App Was Not Supposed to Become a Login Factory
 
 A tiny software company has a beautiful idea.
 
@@ -77,7 +77,7 @@ That is where Amazon Cognito enters.
 
 ---
 
-# Meet Cognito
+## Meet Cognito
 
 Cognito does not build your product.
 Cognito does not decide your business logic.
@@ -125,7 +125,7 @@ flowchart TD
 
 ---
 
-# Every User Needs a Door
+## Every User Needs a Door
 
 An app user is not an AWS engineer.
 An app user is not an EC2 instance.
@@ -159,9 +159,9 @@ They can work together, but they are not the same thing.
 
 ---
 
-# User Pools
+## User Pools
 
-## The Guest List
+### The Guest List
 
 A User Pool is the guest list for your application.
 
@@ -194,9 +194,9 @@ In AWS terms, Cognito user pools authenticate users, while identity pools are us
 
 ---
 
-# Tokens
+## Tokens
 
-## The Wristband at the Door
+### The Wristband at the Door
 
 At a concert, the bouncer does not follow every guest around yelling, “Yes, this one paid!”
 
@@ -226,9 +226,9 @@ It does not let you operate the lighting rig, open the safe, or drive the tour b
 
 ---
 
-# Identity Pools
+## Identity Pools
 
-## The Temporary Staff Badge
+### The Temporary Staff Badge
 
 Sometimes your app user needs to touch AWS resources directly.
 
@@ -252,9 +252,9 @@ AWS documentation describes identity pools as issuing temporary AWS credentials 
 
 ---
 
-# IAM Roles
+## IAM Roles
 
-## What the Badge Actually Opens
+### What the Badge Actually Opens
 
 The temporary badge still needs rules.
 
@@ -270,7 +270,7 @@ For example:
 - Read only the user’s own protected assets
 - Call only specific AWS APIs
 - Use different access based on user group or attributes
-    
+
 
 Identity Pool gives the user temporary AWS credentials.
 
@@ -288,15 +288,15 @@ When you connect a User Pool to an Identity Pool, the app can exchange User Pool
 
 ---
 
-# Hosted UI
+## Managed Login and Hosted UI
 
-## The Login Desk You Did Not Have to Build
+### The Login Desk You Did Not Have to Build
 
 A tiny team can build its own login screens.
 It can also build its own chair.
 That does not mean it should.
 
-Cognito Hosted UI gives you managed sign-up and sign-in pages.
+Cognito managed login, including the classic hosted UI, gives you managed sign-up and sign-in pages.
 
 Not always the prettiest ballroom in the kingdom.
 But functional.
@@ -321,9 +321,9 @@ Hosted UI says:
 
 ---
 
-# Social Login and Federation
+## Social Login and Federation
 
-## Let the Guest Arrive With Another Invitation
+### Let the Guest Arrive With Another Invitation
 
 Some users do not want another password.
 
@@ -352,9 +352,9 @@ Cognito can let users authenticate through outside identity providers, but your 
 
 ---
 
-# Groups
+## Groups
 
-## Different Guests, Different Rooms
+### Different Guests, Different Rooms
 
 Not every signed-in user gets the same app experience.
 
@@ -374,7 +374,7 @@ But not everyone is invited into the wine cellar.
 
 ---
 
-# She Welcomes. She Does Not Govern the Kingdom.
+## She Welcomes. She Does Not Govern the Kingdom.
 
 Cognito welcomes app users.
 
@@ -402,15 +402,15 @@ Your app still owns behavior.
 
 ---
 
-# Painkiller
+## Painkiller
 
-> **Problem**: A tiny dev team wants users to sign up, sign in, reset passwords, use MFA, and maybe log in with Google or Apple. 
-> **Pain**: Building secure user identity from scratch turns the roadmap into a swamp. 
-> **AWS Solution**: Use Cognito. User Pools manage app-user authentication. Identity Pools can exchange trusted identities for temporary AWS credentials. IAM decides what those credentials can access.
+> **Problem:** A tiny dev team wants users to sign up, sign in, reset passwords, use MFA, and maybe log in with Google or Apple.
+> **Pain:** Building secure user identity from scratch turns the roadmap into a swamp.
+> **AWS solution:** Use Cognito. User Pools manage app-user authentication. Identity Pools can exchange trusted identities for temporary AWS credentials. IAM decides what those credentials can access.
 
 ---
 
-# Why AWS Built Cognito
+## Why AWS Built Cognito
 
 Without Cognito...
 
@@ -437,9 +437,9 @@ That is Amazon Cognito.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 Strip away the tiny company, and here is the identity system you were really looking at:
 
@@ -462,7 +462,7 @@ Cognito handled the guest list.
 
 ---
 
-# A Note From the Author
+## A Note From the Author
 
 The tiny-company story gets the main idea right, but here is where the metaphor stops.
 

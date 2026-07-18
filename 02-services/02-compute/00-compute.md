@@ -1,6 +1,6 @@
 # The Wand Chooses the Wizard
 
-## Every Wizard Wants the Elder Wand
+### Every Wizard Wants the Elder Wand
 
 Imagine walking into Ollivanders.
 Thousands of wands line the walls.
@@ -24,7 +24,7 @@ The wizard doesn't choose the wand.
 
 ---
 
-# AWS Works the Same Way
+## AWS Works the Same Way
 
 The first time people open the AWS Console, they ask,
 
@@ -46,7 +46,7 @@ They start with work.
 
 ---
 
-# Listen To The Work
+## Listen to the Work
 
 Imagine your workload could speak.
 
@@ -72,9 +72,9 @@ Each story points to a different compute service.
 
 ---
 
-# The Compute Shelf
+## The Compute Shelf
 
-AWS didn't build five compute services because engineers couldn't agree.
+AWS didn't build many compute services because engineers couldn't agree.
 
 AWS built them because work comes in many forms.
 
@@ -84,6 +84,8 @@ AWS built them because work comes in many forms.
 | I already run in containers. | ECS |
 | I have containers, but I don't want servers. | Fargate |
 | I only run when something happens. | Lambda |
+| I need managed Kubernetes. | EKS |
+| I need a managed batch scheduler. | AWS Batch |
 
 Notice something.
 
@@ -93,7 +95,7 @@ Not the architect.
 
 ---
 
-# There Is No Best Compute
+## There Is No Best Compute
 
 Developers often ask,
 
@@ -113,7 +115,7 @@ Every service exists because it solves a different problem.
 
 ---
 
-# Painkiller
+## Painkiller
 
 > **Problem:** Modern applications have very different compute requirements.
 > **Pain:** Picking compute based on popularity instead of workload leads to unnecessary cost, complexity, or operational overhead.
@@ -121,7 +123,7 @@ Every service exists because it solves a different problem.
 
 ---
 
-# Why AWS Built So Many Compute Services
+## Why AWS Built So Many Compute Services
 
 Every new compute service removes a different kind of operational work.
 
@@ -136,9 +138,9 @@ It's giving each workload the worker it deserves.
 
 ---
 
-# The Wand Rack
+## The Wand Rack
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 | In the story | In AWS | What it actually means |
 |--------------|---------|------------------------|
@@ -154,7 +156,7 @@ The right compute walked out.
 
 ---
 
-# A Note From The Author
+## A Note From the Author
 
 Real AWS architecture isn't magical.
 
