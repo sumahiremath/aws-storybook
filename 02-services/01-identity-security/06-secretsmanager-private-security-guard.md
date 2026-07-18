@@ -1,6 +1,6 @@
 # Secrets Manager = The Private Security Guard
 
-## The Key That Never Changed
+### The Key That Never Changed
 
 The CEO moved into the company's headquarters twelve years ago.
 
@@ -36,7 +36,7 @@ The key never changed.
 
 ---
 
-# Meet The Private Security Guard
+## Meet the Private Security Guard
 
 The company hired a private security guard.
 
@@ -85,7 +85,7 @@ SM --> DB
 
 ---
 
-# Nobody Memorizes The Key
+## Nobody Memorizes The Key
 
 Engineers don't write the password into their code.
 
@@ -103,7 +103,7 @@ Nothing more.
 
 ---
 
-# Changing The Locks
+## Changing The Locks
 
 Imagine an employee leaves the company.
 
@@ -115,7 +115,7 @@ Maybe.
 
 With the security guard...
 
-The locks change automatically.
+When rotation is configured, the locks can change automatically.
 
 Old keys stop working.
 
@@ -129,7 +129,7 @@ It's simply Tuesday.
 
 ---
 
-# The Guard Knows Everyone
+## The Guard Knows Everyone
 
 Not everyone receives the master key.
 
@@ -149,7 +149,7 @@ The guard never hands keys to strangers.
 
 ---
 
-# The Building Never Notices
+## The Building Never Notices
 
 Notice something.
 
@@ -167,15 +167,15 @@ Good security should feel boring.
 
 ---
 
-# Painkiller
+## Painkiller
 
 > **Problem:** Applications need passwords, API keys, and credentials.
 > **Pain:** Humans rarely rotate them, leaving long-lived secrets exposed.
-> **AWS Solution:** Store credentials in Secrets Manager so AWS securely stores, rotates, and distributes secrets automatically.
+> **AWS Solution:** Store credentials in Secrets Manager, retrieve them at runtime, and configure rotation when the downstream system supports it.
 
 ---
 
-# Why AWS Built Secrets Manager
+## Why AWS Built Secrets Manager
 
 Parameter Store already stored encrypted values.
 
@@ -195,7 +195,7 @@ It was built to manage them.
 
 ---
 
-# The Guard Doesn't Store Documents
+## The Guard Doesn't Store Documents
 
 A filing cabinet stores information.
 
@@ -209,9 +209,9 @@ Secrets Manager protects.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 | In the story | In Secrets Manager | What it actually means |
 |---|---|---|
@@ -230,11 +230,13 @@ They simply trusted the guard.
 
 ---
 
-# A Note From The Author
+## A Note From the Author
 
 The security guard simplifies a few things.
 
 Real secret rotation often requires a Lambda function that updates the downstream system, such as a database password, before marking the new secret as current.
+
+Rotation is not enabled merely by storing a secret. Applications retrieve secrets and commonly cache them; Secrets Manager does not push every new value into running application memory.
 
 Secrets Manager doesn't decide who gets access.
 IAM does.

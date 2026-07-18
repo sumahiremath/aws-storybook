@@ -1,6 +1,6 @@
 # Dobby Doesn't Live Here: Lambda as Summoned Compute
 
-## Harry Is Stuck in the Dungeon
+### Harry Is Stuck in the Dungeon
 
 Harry is trapped. No one is coming unless he calls.
 
@@ -22,7 +22,7 @@ Keeping a full-time server alive for that moment is like keeping a house-elf in 
 
 ---
 
-# Meet Dobby
+## Meet Dobby
 
 Dobby does not live in the Chamber. He has no presence in the story until he is summoned.
 
@@ -38,9 +38,9 @@ That is AWS Lambda.
 
 ---
 
-# The Crack
+## The Crack
 
-## Cold Start
+### Cold Start
 
 The first crack takes a beat longer. Dobby has to reassemble.
 
@@ -52,9 +52,9 @@ Real time. Real latency. Very noticeable when the path is sensitive.
 
 ---
 
-# The Lingering Crack
+## The Lingering Crack
 
-## Warm Start
+### Warm Start
 
 Call Dobby again a minute later, and the crack is faster.
 
@@ -66,9 +66,9 @@ Straight to the handler.
 
 ---
 
-# The Terms of Summoning
+## The Terms of Summoning
 
-## Execution Role / IAM
+### Execution Role / IAM
 
 Dobby showing up does not mean unlimited magic.
 
@@ -84,15 +84,17 @@ The terms were set in advance, not improvised on arrival.
 
 ---
 
-# Dobby Does Not Live Here
+## Dobby Does Not Live Here
 
-## No Idle Server
+### No Idle Server
 
 No one feeds Dobby three meals a day next to the Chamber just in case.
 
 That is the Lambda pricing model.
 
-No server sits warm, waiting, burning cost between calls. You pay for the invocation and the runtime, not for a machine standing by.
+You do not provision or manage an always-running server for on-demand Lambda. You pay for requests and execution duration instead of a machine standing by.
+
+Provisioned concurrency is the important exception: it keeps initialized environments ready for predictable startup latency and adds cost while they wait.
 
 The absence of the idle server is not a side effect.
 
@@ -100,9 +102,9 @@ It is the whole idea.
 
 ---
 
-# Many Calls, Many Cracks
+## Many Calls, Many Cracks
 
-## Concurrency
+### Concurrency
 
 Harry, Ron, and Hermione all need rescuing at once, in three different corridors.
 
@@ -116,9 +118,9 @@ Ten emergencies means ten environments, not one very busy one.
 
 ---
 
-# The Time Limit
+## The Time Limit
 
-## Timeout
+### Timeout
 
 Dobby’s rescues are quick by nature.
 
@@ -132,23 +134,23 @@ Lambda is built for work that finishes.
 
 ---
 
-# Dobby Can't Apparate Everywhere
+## Dobby Can't Apparate Everywhere
 
-## VPC Networking Caveat
+### VPC Networking Caveat
 
 Even Dobby has wards he cannot casually cross.
 
 Some spaces need setup first.
 
-By default, Lambda is outside your private VPC. It can reach public AWS services easily.
+By default, a Lambda function is not connected to your VPC. It can call public service endpoints without using your VPC networking.
 
 If it needs to reach private resources, like an internal database, you attach it to the VPC.
 
-That gives it a path inside, but the path has a cost: networking setup, subnet IPs, and no default internet access unless you add NAT.
+That gives it a path inside, but introduces networking setup and consumes subnet IP addresses. Internet access requires a route such as NAT; supported AWS services can instead be reached privately through VPC endpoints.
 
 ---
 
-# Dobby Is Not a Butler
+## Dobby Is Not a Butler
 
 A butler is on staff whether or not anyone rings.
 
@@ -162,21 +164,21 @@ That is Lambda versus EC2.
 
 EC2 is the butler: provisioned, running, billed regardless, built for long stateful work.
 
-Lambda is Dobby: ephemeral, event-triggered, gone the moment the job ends.
+Lambda is Dobby: ephemeral compute invoked on demand, with execution environments that AWS may reuse after a job ends.
 
 Ask a house-elf to run a twelve-hour shift and you have misunderstood what he is for.
 
 ---
 
-# Painkiller
+## Painkiller
 
-> Problem: Code needs to run only when something happens.
-> Pain: Keeping a server alive for occasional work wastes money and maintenance energy.
-> AWS Solution: Use Lambda. The event summons compute, the function runs one bounded task, and nothing waits idle afterward.
+> **Problem:** Code needs to run only when something happens.
+> **Pain:** Keeping a server alive for occasional work wastes money and maintenance energy.
+> **AWS solution:** Use Lambda. An invocation receives bounded compute without requiring you to manage an always-running server.
 
 ---
 
-# Why AWS Built Lambda
+## Why AWS Built Lambda
 
 Before Lambda, occasional work still meant a permanent server.
 
@@ -184,15 +186,15 @@ Provisioned. Patched. Idle most of the time. Billed the whole time.
 
 Lambda collapses that mismatch.
 
-The event calls. The environment appears. The code runs. The environment disappears.
+The event calls. Lambda provides an environment. The code runs. AWS may retain that environment for reuse, but your code cannot depend on it.
 
-Compute summoned exactly when it is needed, and not before.
+Compute supplied on demand without requiring you to manage a standing server.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 | In the story                           | In AWS                                | What it actually means                       |
 | -------------------------------------- | ------------------------------------- | -------------------------------------------- |
@@ -207,7 +209,7 @@ Compute summoned exactly when it is needed, and not before.
 
 ---
 
-# A Note From the Author
+## A Note From the Author
 
 Dobby remembers Harry between appearances. A warm Lambda environment does not. Reuse is an AWS optimization, never a guarantee, and code should not assume state survives between calls.
 

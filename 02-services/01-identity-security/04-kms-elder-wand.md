@@ -1,6 +1,6 @@
 # The Elder Wand Answers to Its True Owner: KMS as Controlled Cryptographic Power
 
-## The Wand Does Not Obey the Hand
+### The Wand Does Not Obey the Hand
 
 The Elder Wand is powerful.
 
@@ -25,7 +25,7 @@ Under what conditions?
 
 ---
 
-# Meet the Wand
+## Meet the Wand
 
 KMS is not the secret message.
 KMS is not the encrypted file.
@@ -46,9 +46,9 @@ The spell happens through KMS.
 
 ---
 
-# The Wand Stays in the Vault
+## The Wand Stays in the Vault
 
-## KMS Key Protection
+### KMS Key Protection
 
 The Elder Wand is too powerful to pass around.
 
@@ -70,9 +70,9 @@ The wand stays in the vault.
 
 ---
 
-# The True Owner Decides
+## The True Owner Decides
 
-## Key Policy
+### Key Policy
 
 The Elder Wand does not respond to random confidence.
 It responds to recognized authority.
@@ -94,9 +94,9 @@ The wand has its own allegiance.
 
 ---
 
-# The Wizard Still Needs Permission
+## The Wizard Still Needs Permission
 
-## IAM Policy
+### IAM Policy
 
 The key policy matters.
 
@@ -124,9 +124,9 @@ Both voices matter.
 
 ---
 
-# The Wand Casts Specific Spells
+## The Wand Casts Specific Spells
 
-## Cryptographic Operations
+### Cryptographic Operations
 
 KMS does not give every caller every spell.
 
@@ -156,9 +156,9 @@ That is least privilege with teeth.
 
 ---
 
-# The Temporary Wand Pass
+## The Temporary Wand Pass
 
-## Grants
+### Grants
 
 Sometimes a service needs temporary permission to use the wand.
 
@@ -188,9 +188,9 @@ The pass is temporary authority.
 
 ---
 
-# The Wand Protects Smaller Wands
+## The Wand Protects Smaller Wands
 
-## Envelope Encryption
+### Envelope Encryption
 
 The Elder Wand does not personally lock every trunk in the castle.
 
@@ -218,9 +218,9 @@ The smaller wand guards the trunk.
 
 ---
 
-# The Sealed Copy
+## The Sealed Copy
 
-## Encrypted Data Key
+### Encrypted Data Key
 
 When KMS generates a data key, the application may receive two forms.
 
@@ -244,9 +244,9 @@ It was protected by a key that only the true authority could unwrap.
 
 ---
 
-# The Wand Has a Name
+## The Wand Has a Name
 
-## Alias
+### Alias
 
 Nobody wants to remember a wand by a long serial number.
 
@@ -274,9 +274,9 @@ But a good name prevents chaos.
 
 ---
 
-# The Wand Changes Without Becoming a Stranger
+## The Wand Changes Without Becoming a Stranger
 
-## Key Rotation
+### Key Rotation
 
 A powerful wand may need new material over time.
 
@@ -300,9 +300,9 @@ It does not become a stranger.
 
 ---
 
-# The Wand Can Be Locked Away
+## The Wand Can Be Locked Away
 
-## Disable Key
+### Disable Key
 
 Sometimes you do not want to destroy the wand.
 
@@ -328,9 +328,9 @@ Do it with eyes open.
 
 ---
 
-# The Wand Is Destroyed Slowly
+## The Wand Is Destroyed Slowly
 
-## Scheduled Deletion
+### Scheduled Deletion
 
 Destroying the Elder Wand should not be easy.
 
@@ -352,9 +352,9 @@ The waiting period exists because cryptographic deletion has teeth.
 
 ---
 
-# The Ministry Records Every Spell
+## The Ministry Records Every Spell
 
-## CloudTrail
+### CloudTrail
 
 Power without records is how dark magic gets paperwork later.
 
@@ -380,9 +380,9 @@ It leaves a trail of who asked the wand to act.
 
 ---
 
-# The Wand Has Different Keepers
+## The Wand Has Different Keepers
 
-## Customer Managed, AWS Managed, and AWS Owned Keys
+### Customer Managed, AWS Managed, and AWS Owned Keys
 
 Not every wand belongs to you in the same way.
 
@@ -414,7 +414,7 @@ Choose the keeper based on what you need: control, auditability, simplicity, or 
 
 ---
 
-# The Wand Is Not the Vault
+## The Wand Is Not the Vault
 
 KMS protects keys.
 
@@ -436,15 +436,15 @@ It is not a junk drawer with velvet lining.
 
 ---
 
-# Painkiller
+## Painkiller
 
-> **Problem**: Applications need to encrypt, decrypt, sign, and verify data without spreading raw cryptographic keys everywhere.  
-> **Pain**: If access depends on who has a copy of the key, the key eventually leaks, rotation becomes chaos, revocation becomes impossible, and auditing breaks.  
-> **AWS Solution**: Use KMS. Keep cryptographic keys protected inside AWS KMS, allow only trusted principals to ask for specific operations, use data keys for envelope encryption, and audit every spell the wand casts.
+> **Problem:** Applications need to encrypt, decrypt, sign, and verify data without spreading raw cryptographic keys everywhere.
+> **Pain:** If access depends on who has a copy of the key, the key eventually leaks, rotation becomes chaos, revocation becomes impossible, and auditing breaks.
+> **AWS solution:** Use KMS. Keep cryptographic keys protected inside AWS KMS, allow only trusted principals to ask for specific operations, use data keys for envelope encryption, and audit every spell the wand casts.
 
 ---
 
-# Why AWS Built KMS
+## Why AWS Built KMS
 
 Encryption sounds simple until you ask where the keys live.
 
@@ -476,9 +476,9 @@ The record is kept.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 |In the story|In AWS|What it actually means|
 |---|---|---|
@@ -501,7 +501,7 @@ The record is kept.
 
 ---
 
-# A Note From the Author
+## A Note From the Author
 
 The Elder Wand metaphor works because KMS is about controlled power.
 

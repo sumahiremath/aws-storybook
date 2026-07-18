@@ -1,6 +1,7 @@
-## The Restaurant Agreement
+# Shared Responsibility: The Restaurant Agreement
 
-### The Pain
+
+## The Pain
 
 You decide to open a restaurant.
 
@@ -32,10 +33,10 @@ Most restaurants don't actually want to become construction companies.
 
 Instead, imagine a company says:
 
-> "We'll own the building.  
-> We'll maintain every oven.  
-> We'll repair equipment.  
-> We'll clean the ventilation.  
+> "We'll own the building.
+> We'll maintain every oven.
+> We'll repair equipment.
+> We'll clean the ventilation.
 > We'll make sure the lights stay on."
 
 Now your job becomes...
@@ -118,11 +119,11 @@ You handed out every key.
 
 ---
 
-# The Different Restaurants
+## The Different Restaurants
 
 Now explain why responsibilities change.
 
-## EC2
+### EC2
 
 AWS gives you the kitchen.
 
@@ -134,7 +135,7 @@ Lots of responsibility.
 
 ---
 
-## RDS
+### RDS
 
 AWS also maintains the ovens.
 
@@ -144,7 +145,7 @@ Less responsibility.
 
 ---
 
-## Lambda
+### Lambda
 
 AWS maintains almost everything.
 
@@ -154,7 +155,7 @@ Very little infrastructure responsibility remains.
 
 ---
 
-## SaaS
+### SaaS
 
 Now imagine Uber Eats.
 
@@ -164,7 +165,7 @@ You simply order food.
 
 ---
 
-## Architectural Mapping
+### Architectural Mapping
 
 ```text
 Traditional Data Center
@@ -218,7 +219,7 @@ You
 
 ---
 
-# Knife Cut
+## Knife Cut
 
 People think AWS means:
 
@@ -234,7 +235,7 @@ That one preposition changes everything.
 
 ---
 
-# Real World
+## Real World
 
 When a company gets breached because:
 
@@ -243,13 +244,13 @@ When a company gets breached because:
 - S3 bucket was public
 - Database password was "Password123"
 
-AWS didn't fail.
+These are typically failures in the customer-controlled portion of the shared responsibility model.
 
-The customer violated their part of the agreement.
+AWS supplies security capabilities and assurance for its layer. Customers must configure and operate their workloads securely, and some controls are shared by both parties.
 
 ---
 
-# The Last Bite
+## The Last Bite
 
 AWS doesn't remove responsibility.
 

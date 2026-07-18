@@ -1,14 +1,14 @@
 # Which Cape Are You Wearing? IAM as a Superhero Universe
 
-## I Tried to Memorize IAM
+### I Tried to Memorize IAM
 
-Identity policies.  
-Resource policies.  
-Groups.  
-Roles.  
-Trust policies.  
-SCPs.  
-Permission boundaries.  
+Identity policies.
+Resource policies.
+Groups.
+Roles.
+Trust policies.
+SCPs.
+Permission boundaries.
 Session policies.
 
 It looked organized.
@@ -28,7 +28,7 @@ What if AWS IAM was a superhero universe?
 
 ---
 
-# The Person Is Not the Cape
+## The Person Is Not the Cape
 
 This was the first crack in the wall.
 
@@ -36,9 +36,9 @@ A person is just a person.
 
 The cape is what gives them powers.
 
-The suit can fly.  
-The mask can open doors.  
-The badge can enter restricted rooms.  
+The suit can fly.
+The mask can open doors.
+The badge can enter restricted rooms.
 The borrowed armor can do things an ordinary shirt cannot.
 
 That is IAM.
@@ -63,9 +63,9 @@ The better question is:
 
 ---
 
-# The Cape Has Powers
+## The Cape Has Powers
 
-## Identity Policy
+### Identity Policy
 
 Once I saw the cape, policies finally made sense.
 
@@ -73,9 +73,9 @@ A policy is not the hero.
 
 A policy is the power stitched into the cape.
 
-Can this cape read from S3?  
-Can it write to DynamoDB?  
-Can it invoke Lambda?  
+Can this cape read from S3?
+Can it write to DynamoDB?
+Can it invoke Lambda?
 Can it publish to SNS?
 
 That is an identity policy.
@@ -90,9 +90,9 @@ It only cares what powers were stitched into it.
 
 ---
 
-# The Hero Team
+## The Hero Team
 
-## IAM Group
+### IAM Group
 
 Some heroes belong to a team.
 
@@ -112,9 +112,9 @@ People do.
 
 ---
 
-# Borrowed Capes
+## Borrowed Capes
 
-## AssumeRole
+### AssumeRole
 
 Then came the real unlock.
 
@@ -138,7 +138,7 @@ Because not everyone gets to grab the legendary cape from the vault and call it 
 
 ---
 
-# AWS Services Wear Capes Too
+## AWS Services Wear Capes Too
 
 Humans are not the only ones who need permissions.
 
@@ -158,9 +158,9 @@ Even the robots need costumes.
 
 ---
 
-# Who Is Allowed to Wear the Cape?
+## Who Is Allowed to Wear the Cape?
 
-## Trust Policy
+### Trust Policy
 
 A role has two sides.
 
@@ -183,9 +183,9 @@ The closet can still be locked.
 
 ---
 
-# The Cape Has a Ceiling
+## The Cape Has a Ceiling
 
-## Permissions Boundary
+### Permissions Boundary
 
 Now imagine a superhero trainee.
 
@@ -206,9 +206,9 @@ It is the ceiling.
 
 ---
 
-# The Temporary Mission Brief
+## The Temporary Mission Brief
 
-## Session Policy
+### Session Policy
 
 Sometimes you wear a cape for one mission only.
 
@@ -216,9 +216,9 @@ Even then, someone hands you a temporary mission brief.
 
 For this mission:
 
-Read only.  
-This bucket only.  
-This hour only.  
+Read only.
+This bucket only.
+This hour only.
 No extra heroics.
 
 That is a **session** policy.
@@ -233,17 +233,17 @@ This mission is not.
 
 ---
 
-# The Cape Is Temporary
+## The Cape Is Temporary
 
-## Temporary Credentials
+### Temporary Credentials
 
 When you assume a role, AWS does not hand you the permanent cape.
 
 It gives you temporary credentials.
 
-A temporary access key.  
-A temporary secret.  
-A session token.  
+A temporary access key.
+A temporary secret.
+A session token.
 An expiration time.
 
 For that session, AWS sees you as the role.
@@ -256,9 +256,9 @@ But it is rented, not owned.
 
 ---
 
-# The Door Has an Opinion
+## The Door Has an Opinion
 
-## Resource Policy
+### Resource Policy
 
 Then I realized something else.
 
@@ -289,9 +289,9 @@ The door may still refuse to open.
 
 ---
 
-# The Laws of the Universe
+## The Laws of the Universe
 
-## SCP and RCP
+### SCP and RCP
 
 Above the heroes, above the capes, above the doors, there are cosmic laws.
 
@@ -316,9 +316,9 @@ These are laws of physics.
 
 ---
 
-# The Hard No
+## The Hard No
 
-## Explicit Deny
+### Explicit Deny
 
 Then there is the simplest rule in IAM.
 
@@ -341,7 +341,7 @@ No cape outruns an explicit deny.
 
 ---
 
-# The Cross-Account Scene
+## The Cross-Account Scene
 
 This is where the cape model really helped.
 
@@ -371,18 +371,18 @@ The important part:
 
 ---
 
-# The Smallest Cape That Works
+## The Smallest Cape That Works
 
-## Least Privilege
+### Least Privilege
 
 A good cape should not do everything.
 
 It should do the smallest useful thing.
 
-Read this bucket.  
-Write to this table.  
-Invoke this function.  
-Only from this account.  
+Read this bucket.
+Write to this table.
+Invoke this function.
+Only from this account.
 Only for this path.
 
 That is least privilege.
@@ -394,19 +394,19 @@ It is the one that can do exactly the mission, and nothing more.
 
 ---
 
-# The Cape Theory
+## The Cape Theory
 
 When I see an IAM question now, I do not start with JSON.
 
 I ask six questions.
 
 1. Who am I?
-2. Am I wearing a cape?    
+2. Am I wearing a cape?
 3. What powers does this cape have?
 4. Who owns the object?
 5. Does the object allow me?
 6. Does the organization forbid it?
-    
+
 
 Then I ask the final override question:
 > Did anyone explicitly say no?
@@ -485,15 +485,15 @@ flowchart TD
 
 ---
 
-# Painkiller
+## Painkiller
 
-> **Problem**: AWS access decisions involve identities, roles, policies, resources, and organization-level guardrails.  
-> **Pain**: Memorizing IAM diagrams makes everything blur together, especially in cross-account and assumed-role scenarios.  
-> **AWS Solution**: Think in layers. Identify the principal, the cape being worn, the powers attached to it, the limits around it, the resource’s own rules, and any explicit deny.
+> **Problem:** AWS access decisions involve identities, roles, policies, resources, and organization-level guardrails.
+> **Pain:** Memorizing IAM diagrams makes everything blur together, especially in cross-account and assumed-role scenarios.
+> **AWS solution:** Think in layers. Identify the principal, the cape being worn, the powers attached to it, the limits around it, the resource’s own rules, and any explicit deny.
 
 ---
 
-# Why AWS Built IAM This Way
+## Why AWS Built IAM This Way
 
 Cloud systems are not one castle with one key.
 
@@ -517,9 +517,9 @@ The trick is knowing which layer is speaking.
 
 ---
 
-# The Masthead
+## The Masthead
 
-## What Actually Just Happened
+### What Actually Just Happened
 
 |In the story|In AWS|What it actually means|
 |---|---|---|
@@ -537,7 +537,7 @@ The trick is knowing which layer is speaking.
 
 ---
 
-# A Note From the Author
+## A Note From the Author
 
 The cape metaphor helps because IAM is not just about who you are.
 

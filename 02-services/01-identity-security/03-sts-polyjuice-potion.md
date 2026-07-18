@@ -1,7 +1,6 @@
+# STS = Polyjuice Potion
 
-## STS = Polyjuice Potion
-
-### The Pain
+## The Pain
 
 Harry, Ron, and Hermione need to enter the Ministry.
 
@@ -29,7 +28,7 @@ You become yourself again.
 
 ---
 
-### AssumeRole
+## AssumeRole
 
 Harry doesn't gain new magical powers.
 
@@ -47,7 +46,7 @@ Not the caller.
 
 ---
 
-### Temporary Credentials
+## Temporary Credentials
 
 Polyjuice always expires.
 
@@ -71,7 +70,7 @@ Gone.
 
 ---
 
-### Cross Account
+## Cross Account
 
 Imagine borrowing Polyjuice from another school.
 
@@ -83,15 +82,13 @@ That's cross-account AssumeRole.
 
 ---
 
-### Least Privilege
+## Least Privilege
 
 You don't become Dumbledore.
 
-You become exactly the person whose identity you borrowed.
+You receive the permissions available to the role session.
 
-No extra permissions.
-
-Only theirs.
+No extra permissions are created. Session policies, permissions boundaries, organization guardrails, and explicit denies can further reduce what the session may do.
 
 ---
 
@@ -111,7 +108,7 @@ IAM answers:
 
 STS answers:
 
-> **Who are you pretending to be right now?**
+> **Which role are you temporarily acting as right now?**
 
 ---
 
@@ -126,7 +123,7 @@ STS answers:
 |Borrowing ministry identity|Cross-account AssumeRole|Temporary cross-account access|
 
 ---
-# A Note From The Author
+## A Note From the Author
 
 Polyjuice Potion captures the core intuition behind STS remarkably well, but like every story, it simplifies reality.
 
@@ -137,6 +134,8 @@ Polyjuice Potion captures the core intuition behind STS remarkably well, but lik
 **Nobody copies identities.** Polyjuice physically transforms the drinker. STS doesn't. AWS simply says, "For the next hour, you may act as this IAM role," and issues temporary credentials that prove it.
 
 **Trust still matters.** In Harry Potter, anyone with the right hair can brew Polyjuice. In AWS, a role must explicitly trust you before you can assume it. Without a trust relationship, the transformation never happens.
+
+**Effective permissions can be narrower than the role policy.** Session policies, permissions boundaries, organization guardrails, resource policies, and explicit denies can all affect the final decision.
 
 Use the story to remember the idea.
 

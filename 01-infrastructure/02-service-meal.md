@@ -20,7 +20,7 @@ Instead, someone hands you a shopping list.
 - Maintain the kitchen.
 - Replace broken appliances.
 - Repeat tomorrow.
-    
+
 Suddenly, your goal is no longer eating healthy.
 
 Your life has become managing a kitchen.
@@ -87,13 +87,10 @@ AWS gives you a professional kitchen with chefs maintaining the equipment.
 
 You only prepare your recipes.
 
-AWS handles:
+AWS manages the database infrastructure and provides automated backup, patching, replication, high-availability, and monitoring capabilities.
 
-- Backups
-- Patching
-- Replication
-- High availability
-- Monitoring
+You still configure retention, availability, access, monitoring, schemas, queries, and data.
+
 ### Lambda
 
 You don't even own a kitchen.
@@ -196,4 +193,3 @@ That is the design philosophy behind almost every managed service in AWS.
 Now that you know AWS can prepare the meal, there is one important question left:
 
 **Who is responsible when something goes wrong in the kitchen?**
-

@@ -1,6 +1,7 @@
-## Stop Hiring People to Wait
+# Event-Driven Thinking: Stop Hiring People to Wait
 
-### The Pain
+
+## The Pain
 
 Imagine opening a pizza restaurant.
 
@@ -70,7 +71,7 @@ The oven turns off.
 
 Nobody waits.
 
-Nothing burns money while idle.
+No application server needs to be kept running solely to wait for this order.
 
 ---
 
@@ -90,9 +91,7 @@ Examples:
 - Timer reaches noon.
 - Message enters a queue.
 
-Those aren't requests.
-
-They're events.
+These are facts that something happened. A request or command asks for an action; an event records a change that consumers may react to.
 
 ---
 
@@ -170,17 +169,14 @@ Done
 
 Events solve several problems.
 
-No idle infrastructure.
-Better scaling.
-Lower cost.
-Faster reactions.
-Loose coupling.
-Independent systems.
-Everything becomes smaller.
+- Less idle capacity for your team to operate
+- Independent scaling
+- The potential for lower cost
+- Faster reactions
+- Loose coupling
+- Independent systems
 
-Simpler.
-
-More resilient.
+Those benefits are not automatic. Event-driven systems must still handle retries, duplicate delivery, ordering, observability, and eventual consistency.
 
 ---
 
