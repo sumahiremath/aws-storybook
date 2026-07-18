@@ -1,4 +1,4 @@
-## Stop Hiring People to Wait
+	## Stop Hiring People to Wait
 
 ### The Pain
 
@@ -264,8 +264,8 @@ People shouldn't.
 
 ---
 
-**Next chapter:** Now that you understand events...
+**Next chapter:** _How to Think Like an Architect_
 
-Meet the first service built entirely around them.
+Now that you understand how AWS reacts when work arrives, the next question is bigger:
 
-**Lambda: Dobby Doesn't Live Here.**
+**How do you decide which service should handle that work in the first place?**

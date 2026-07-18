@@ -81,3 +81,11 @@ The guide smiled.
 AWS isn't a collection of services.
 
 It's a country built from twenty years of engineering lessons.
+
+---
+
+**Next chapter:** _Service as a Meal_
+
+Now that you have crossed the border and explored AWS Country, it is time to step inside one of its busiest kitchens.
+
+Because every AWS service is like a meal: created for a specific need, prepared by the right workers, and served when someone orders it.

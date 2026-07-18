@@ -62,22 +62,22 @@ Neither can do the other's job.
 
 AWS worries about:
 
-🏢 The building
-⚡ Electricity
-🚰 Plumbing
-🔥 Fire protection
-🍳 Kitchen equipment
-🔧 Repairs
-🧹 Kitchen maintenance
-Security guards
-Physical servers
-Networking equipment
-Cooling
-Power
-Disk failures
-Hypervisors
-Availability Zones
-Regions
+- The building
+- Electricity
+- Plumbing
+- Fire protection
+- Kitchen equipment
+- Repairs
+- Kitchen maintenance
+- Security guards
+- Physical servers
+- Networking equipment
+- Cooling
+- Power
+- Disk failures
+- Hypervisors
+- Availability Zones
+- Regions
 
 ---
 
@@ -85,20 +85,20 @@ Regions
 
 You decide:
 
-🍝 The recipes
-👨‍🍳 The chefs
-🧂 Ingredients
-📋 Menu
-Who can enter the kitchen
-Food safety
-Customer information
-Restaurant policies
-Application code
-IAM permissions
-Encryption choices
-Database contents
-Secrets
-Compliance
+- The recipes
+- The chefs
+- Ingredients
+- Menu
+- Who can enter the kitchen
+- Food safety
+- Customer information
+- Restaurant policies
+- Application code
+- IAM permissions
+- Encryption choices
+- Database contents
+- Secrets
+- Compliance
 
 ---
 
@@ -126,9 +126,9 @@ Now explain why responsibilities change.
 
 AWS gives you the kitchen.
 
-You cook.
-You clean.
-You maintain your appliances.
+- You cook.
+- You clean.
+- You maintain your appliances.
 
 Lots of responsibility.
 
@@ -138,7 +138,7 @@ Lots of responsibility.
 
 AWS also maintains the ovens.
 
-You still cook.
+- You still cook.
 
 Less responsibility.
 
@@ -148,7 +148,7 @@ Less responsibility.
 
 AWS maintains almost everything.
 
-You simply submit recipes.
+- You simply submit recipes.
 
 Very little infrastructure responsibility remains.
 
@@ -158,7 +158,7 @@ Very little infrastructure responsibility remains.
 
 Now imagine Uber Eats.
 
-You don't even own the restaurant anymore.
+- You don't even own the restaurant anymore.
 
 You simply order food.
 
@@ -176,44 +176,44 @@ You own everything.
 EC2
 
 AWS
-Building
-Hardware
-Networking
+  Building
+  Hardware
+  Networking
 
 You
-OS
-Runtime
-Application
-Data
+  OS
+  Runtime
+  Application
+  Data
 
 ────────────────────────────
 
 RDS
 
 AWS
-Building
-Hardware
-Networking
-Database Engine
-Patching
-Backups
+  Building
+  Hardware
+  Networking
+  Database Engine
+  Patching
+  Backups
 
 You
-Schema
-Queries
-Data
+  Schema
+  Queries
+  Data
 
 ────────────────────────────
 
 Lambda
 
 AWS
-Almost Everything
+  Almost Everything
 
 You
-Function
-IAM
-Data
+  Function
+  IAM
+  Data
 ```
 
 ---

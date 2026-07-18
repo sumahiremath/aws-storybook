@@ -189,3 +189,11 @@ Instead ask:
 Once you answer that question, the purpose of the service becomes much easier to understand.
 
 That is the design philosophy behind almost every managed service in AWS.
+
+---
+**Next chapter:** _Shared Responsibility_
+
+Now that you know AWS can prepare the meal, there is one important question left:
+
+**Who is responsible when something goes wrong in the kitchen?**
+

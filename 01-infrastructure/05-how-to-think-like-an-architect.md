@@ -238,3 +238,9 @@ People who memorize AWS services forget them.
 People who understand the problems each service solves can usually predict the right answer, even when AWS launches a brand-new service.
 
 ---
+
+**Next section:** _AWS Services_
+
+Now that you know how an architect thinks, it is time to meet the services that solve those problems.
+
+From here, we will explore AWS one service at a time: what pain it removes, how it works, and when to choose it.
