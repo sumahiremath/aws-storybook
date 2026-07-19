@@ -243,7 +243,7 @@ They diagnose before prescribing.
 
 ---
 
-## Last Bite
+## The Last Bite
 
 People who memorize AWS services forget them.
 

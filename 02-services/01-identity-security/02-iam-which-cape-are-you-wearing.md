@@ -282,16 +282,23 @@ Identity policy asks:
 Resource policy asks:
 > Does the object allow this hero in?
 
-Access can require both sides to agree.
+Inside one account, identity-based and resource-based allows generally form a union.
 
-The hero may have a key.
-The door may still refuse to open.
+If the cape allows the action, or the door directly allows the principal, the request may proceed.
+
+But that is the first-pass model, not the whole evaluation engine. Permissions boundaries, session policies, organization guardrails, service-specific rules, and explicit denies can still narrow or block the request.
+
+Across accounts, direct resource access is stricter. The identity in the trusted account needs permission to make the request, and the resource policy in the trusting account must allow that external principal.
+
+Same account often means either side can provide the allow.
+
+Cross-account direct access requires permission on both sides.
 
 ---
 
 ## The Laws of the Universe
 
-### SCP and RCP
+### SCP
 
 Above the heroes, above the capes, above the doors, there are cosmic laws.
 
@@ -308,11 +315,23 @@ Even if the hero says yes.
 Even if the door says yes.
 The universe can still say no.
 
-Resource Control Policies are the same kind of organizational guardrail, but from the resource side.
+An SCP is a law governing the hero:
 
-They help define what resources in the organization are allowed to expose.
-These are not capes.
-These are laws of physics.
+> No matter what cape you wear, you cannot fly in this dimension.
+
+It limits the maximum permissions available to principals in member accounts.
+
+### RCP
+
+A Resource Control Policy is a law governing the place:
+
+> No matter who knocks, this door cannot open under these conditions.
+
+It limits the maximum permissions available against supported resources in member accounts, including requests made by external principals.
+
+Neither an SCP nor an RCP grants access.
+
+They are guardrails: principal-centric law and resource-centric law.
 
 ---
 
@@ -368,6 +387,41 @@ The important part:
 **The developer did not magically bring all of Account A’s powers into Account B.**
 **They borrowed a cape from Account B.**
 **That cape decides what they can do there.**
+
+### The Ultimate Test
+
+AssumeRole does not eliminate cross-account authorization.
+
+It moves the cross-account decision to the moment the cape is borrowed.
+
+First, AWS asks whether the developer may put on the cape:
+
+1. Account A must allow the developer to call `sts:AssumeRole` for the role.
+2. Account B’s role trust policy must trust that Account A principal.
+
+Only when both sides agree does AWS issue temporary credentials for the role session.
+
+```text
+Account A developer
+        |
+        v
+Authorized to call AssumeRole
+        |
+        v
+Trusted by Account B role
+        |
+        v
+Account B role session
+        |
+        v
+Request to Account B table
+```
+
+Then AWS asks what the borrowed cape may do.
+
+The original Account A permissions do not travel with the developer. The request uses the Account B role session, but the evaluation can still include the role policy, session policy, permissions boundary, resource policy, SCP, RCP, and any explicit deny.
+
+The puzzle becomes easier to organize, but it does not become a policy-free single-account shortcut.
 
 ---
 
@@ -532,7 +586,8 @@ The trick is knowing which layer is speaking.
 |Cape power ceiling|Permissions boundary|Maximum permissions an identity policy can grant|
 |Temporary mission brief|Session policy|Restrictions on a role session|
 |The door has an opinion|Resource policy|The resource grants or denies access|
-|Laws of the universe|SCP / RCP|Organization-level guardrails|
+|Law governing the hero|SCP|Principal-centric organization guardrail|
+|Law governing the place|RCP|Resource-centric organization guardrail for supported resources|
 |The hard no|Explicit deny|Final override that blocks access|
 
 ---
@@ -553,3 +608,19 @@ And an explicit deny can end the whole story.
 
 The best mental models do not simplify reality.
 They reveal the hidden structure that was there, all along.
+
+---
+
+## The Last Bite
+
+Access is never just about the hero.
+
+It is about the identity, the active role, the policies, the resource, and every limit surrounding the request.
+
+---
+
+**Next chapter:** _STS = Polyjuice Potion_
+
+IAM defines the cape, its powers, and who may wear it.
+
+Next, we will explore how AWS STS lends that cape temporarily and issues the credentials that make the role session real.

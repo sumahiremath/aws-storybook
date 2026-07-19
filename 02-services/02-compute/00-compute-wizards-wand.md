@@ -183,3 +183,11 @@ It's the one whose strengths match the work you're trying to accomplish.
 Like Ollivander said...
 
 **The wand chooses the wizard.**
+
+---
+
+## The Last Bite
+
+There is no universally best compute service.
+
+The workload chooses by revealing what it needs.

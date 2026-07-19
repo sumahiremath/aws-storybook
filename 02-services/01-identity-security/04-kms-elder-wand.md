@@ -1,6 +1,6 @@
 # The Elder Wand Answers to Its True Owner: KMS as Controlled Cryptographic Power
 
-### The Wand Does Not Obey the Hand
+## The Wand Does Not Obey the Hand
 
 The Elder Wand is powerful.
 
@@ -120,7 +120,11 @@ The identity says:
 The key says:
 > I recognize you.
 
-Both voices matter.
+The key policy must provide the authority.
+
+It can allow a principal directly, or it can enable the account to delegate access through IAM policies.
+
+An IAM allow cannot independently override the key policy.
 
 ---
 
@@ -144,6 +148,8 @@ Signing is not the same as verification.
 
 Managing a key is not the same as using a key.
 
+The available spells also depend on the key type. Symmetric, asymmetric, and HMAC keys support different cryptographic operations.
+
 A good KMS policy does not say:
 
 > Here, take all the magic.
@@ -156,15 +162,15 @@ That is least privilege with teeth.
 
 ---
 
-## The Temporary Wand Pass
+## The Scoped Wand Pass
 
 ### Grants
 
-Sometimes a service needs temporary permission to use the wand.
+Sometimes a service needs scoped permission to use the wand.
 
-Not forever.
+Not ownership.
 
-Not broad ownership.
+Not unlimited access.
 
 Just enough access to do a job.
 
@@ -184,7 +190,9 @@ In this context.
 
 The wand remains in the vault.
 
-The pass is temporary authority.
+The pass is delegated, revocable authority.
+
+A grant is not inherently short-lived. It remains effective until it is retired, revoked, or the KMS key is deleted.
 
 ---
 
@@ -230,13 +238,15 @@ An encrypted copy of that data key to store beside the encrypted data.
 
 The plaintext key must be handled carefully and discarded.
 
-The encrypted data key can be stored safely with the ciphertext.
+The encrypted data key can be stored alongside the ciphertext because it remains encrypted. The surrounding storage still needs appropriate access controls.
 
 Later, the application sends the encrypted data key back to KMS.
 
 If authorized, KMS decrypts it.
 
 Then the application can decrypt the data.
+
+When plaintext is not needed immediately, `GenerateDataKeyWithoutPlaintext` can return only the encrypted data key.
 
 The orb was never protected by vibes.
 
@@ -298,6 +308,10 @@ The wand gets a new core.
 
 It does not become a stranger.
 
+Rotation does not re-encrypt existing data or rotate data keys that were already generated.
+
+Automatic rotation is optional for eligible customer managed keys. AWS managed keys rotate automatically, while unsupported key types and origins require a different rotation approach.
+
 ---
 
 ## The Wand Can Be Locked Away
@@ -338,7 +352,11 @@ KMS key deletion is intentionally slow.
 
 You schedule deletion with a waiting period.
 
+For most KMS keys, that waiting period is 7–30 days, with 30 days as the default.
+
 During that window, you can still change your mind.
+
+While deletion is pending, the key cannot be used for cryptographic operations.
 
 After the key is deleted, anything encrypted under that key may become unrecoverable.
 
@@ -358,7 +376,7 @@ The waiting period exists because cryptographic deletion has teeth.
 
 Power without records is how dark magic gets paperwork later.
 
-KMS integrates with CloudTrail.
+KMS integrates with AWS CloudTrail.
 
 Key usage can be audited.
 
@@ -377,6 +395,8 @@ It is accountability.
 A good KMS setup does not merely protect data.
 
 It leaves a trail of who asked the wand to act.
+
+That visibility depends on the keeper. Customers can audit activity for customer managed and AWS managed keys through their CloudTrail configuration, but AWS owned key activity is not directly visible to them.
 
 ---
 
@@ -422,9 +442,9 @@ It is not a general-purpose secrets drawer.
 
 It is not where you store database passwords, API tokens, and random configuration.
 
-For secrets, use a secrets manager.
+For secrets, use AWS Secrets Manager.
 
-For parameters, use parameter storage.
+For configuration, use AWS Systems Manager Parameter Store.
 
 For cryptographic key control, use KMS.
 
@@ -439,8 +459,16 @@ It is not a junk drawer with velvet lining.
 ## Painkiller
 
 > **Problem:** Applications need to encrypt, decrypt, sign, and verify data without spreading raw cryptographic keys everywhere.
-> **Pain:** If access depends on who has a copy of the key, the key eventually leaks, rotation becomes chaos, revocation becomes impossible, and auditing breaks.
-> **AWS solution:** Use KMS. Keep cryptographic keys protected inside AWS KMS, allow only trusted principals to ask for specific operations, use data keys for envelope encryption, and audit every spell the wand casts.
+> **Pain:** If access depends on distributing copies of a key, exposure risk grows, rotation becomes chaotic, revocation becomes difficult, and auditing breaks.
+> **AWS solution:** Use KMS. Keep cryptographic keys protected behind KMS authorization, allow trusted principals to request specific operations, use data keys for envelope encryption, and audit the activity visible for the selected key type.
+
+---
+
+## Knife Cut
+
+Possessing the encrypted data does not give you the power to decrypt it.
+
+> **The key does not obey possession. It obeys authorization.**
 
 ---
 
@@ -454,7 +482,7 @@ If the key is copied into every service, every service becomes a security incide
 
 If nobody knows who used the key, auditing turns into folklore.
 
-If rotation is manual, old data becomes dangerous.
+If key lifecycle changes are handled manually across applications, rotation becomes inconsistent and difficult to audit.
 
 If deletion is careless, recovery becomes impossible.
 
@@ -480,24 +508,24 @@ The record is kept.
 
 ### What Actually Just Happened
 
-|In the story|In AWS|What it actually means|
-|---|---|---|
-|Elder Wand|KMS key|Controlled cryptographic key|
-|Wand vault|AWS KMS|Managed service that protects and uses keys|
-|True owner|Key policy|Primary authority for who can use the key|
-|Wizard’s permission|IAM policy|Identity-side permission to call KMS actions|
-|Wand allegiance|Authorization decision|Key obeys policy, not possession|
-|Specific spells|KMS actions|Encrypt, Decrypt, GenerateDataKey, Sign, Verify|
-|Temporary wand pass|Grant|Scoped permission for a principal or service|
-|Smaller wand|Data key|Key used to encrypt actual data|
-|Wand protects smaller wand|Envelope encryption|KMS key protects data keys; data keys protect data|
-|Sealed copy|Encrypted data key|Stored encrypted key that KMS can later decrypt|
-|Wand case label|Alias|Friendly name pointing to a KMS key|
-|New wand core|Key rotation|New key material for new cryptographic operations|
-|Wand locked away|Disabled key|Key cannot be used while disabled|
-|Slow destruction|Scheduled deletion|Waiting period before permanent key deletion|
-|Ministry records|CloudTrail|Audit trail of KMS API calls|
-|Different keepers|Customer managed / AWS managed / AWS owned keys|Different levels of control and responsibility|
+| In the story | In AWS | What it actually means |
+| --- | --- | --- |
+| Elder Wand | KMS key | Controlled cryptographic key |
+| Wand vault | AWS KMS | Managed service that protects and uses keys |
+| True owner | Key policy | Primary authority for who can use the key |
+| Wizard’s permission | IAM policy | Identity-side permission enabled by the key policy |
+| Wand allegiance | Authorization decision | Key obeys policy, not possession |
+| Specific spells | KMS actions | `Encrypt`, `Decrypt`, `GenerateDataKey`, `Sign`, `Verify` |
+| Scoped wand pass | Grant | Scoped, revocable permission for a principal or service |
+| Smaller wand | Data key | Key used to encrypt actual data |
+| Wand protects smaller wand | Envelope encryption | KMS key protects data keys; data keys protect data |
+| Sealed copy | Encrypted data key | Stored encrypted key that KMS can later decrypt |
+| Wand case label | Alias | Friendly name pointing to a KMS key |
+| New wand core | Key rotation | New key material for new cryptographic operations |
+| Wand locked away | Disabled key | Key cannot be used while disabled |
+| Slow destruction | Scheduled deletion | Waiting period before permanent key deletion |
+| Ministry records | AWS CloudTrail | Audit trail for visible KMS API activity |
+| Different keepers | Customer managed / AWS managed / AWS owned keys | Different levels of control and responsibility |
 
 ---
 
@@ -519,6 +547,10 @@ An alias is not the key. It is a name pointing to the key.
 
 Rotation does not erase old data. KMS keeps what it needs to decrypt older ciphertext.
 
+Rotation also does not re-encrypt existing data or replace data keys that have already been generated.
+
+The vault is a useful simplification. Imported key material originates outside AWS KMS before it is imported, and custom key stores use different underlying key-store arrangements.
+
 Disabling a key can break live systems.
 
 Deleting a key can make encrypted data unrecoverable.
@@ -527,3 +559,19 @@ And the most important lesson:
 
 Power is not possession.
 Power is authorization.
+
+---
+
+## The Last Bite
+
+KMS keeps cryptographic power behind policy instead of passing raw keys from hand to hand.
+
+The key works only when authorization says it should.
+
+---
+
+**Next chapter:** _Parameter Store = The Filing Cabinet_
+
+KMS controls cryptographic keys and the operations they may perform.
+
+Next, we will explore how AWS Systems Manager Parameter Store keeps application configuration organized, named, and available without hardcoding it into the application.
