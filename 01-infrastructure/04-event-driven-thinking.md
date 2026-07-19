@@ -233,13 +233,11 @@ Lambda processes
 ## Knife Cut
 
 Traditional software asks
-
 > "Is there work yet?"
 
 every second.
 
 Event-driven software says
-
 > "Tell me when work arrives."
 
 One wastes energy.

@@ -157,7 +157,7 @@ The higher you move up the AWS service stack, the less time you spend managing i
 
 ---
 
-## The Knife Cut
+## Knife Cut
 
 Most people think AWS sells servers.
 
@@ -175,7 +175,7 @@ Every managed service exists because AWS looked at a repetitive operational task
 
 ---
 
-## The Takeaway
+## The Last Bite
 
 When evaluating any AWS service, don't start by asking:
 > **What does this service do?**

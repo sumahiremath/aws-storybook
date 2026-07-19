@@ -93,7 +93,7 @@ That is Amazon Cognito.
 
 ---
 
-```
+```mermaid
 flowchart TD
     subgraph Startup[" Tiny Company Building an App "]
         U[" App User"]
@@ -270,7 +270,6 @@ For example:
 - Read only the user’s own protected assets
 - Call only specific AWS APIs
 - Use different access based on user group or attributes
-
 
 Identity Pool gives the user temporary AWS credentials.
 
@@ -475,3 +474,19 @@ Third, Cognito does not remove all authorization work from your app. It can auth
 Use the story to remember the door.
 
 Use the note to remember the locks.
+
+---
+
+## The Last Bite
+
+Cognito gives your application a managed front door.
+
+Your application still decides what each authenticated user may do inside.
+
+---
+
+**Next chapter:** _Which Cape Are You Wearing? IAM as a Superhero Universe_
+
+Cognito can prove who entered and help issue a temporary badge.
+
+Next, we will explore how IAM decides which powers that identity or badge actually carries.

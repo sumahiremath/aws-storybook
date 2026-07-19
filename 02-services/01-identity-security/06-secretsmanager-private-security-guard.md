@@ -1,6 +1,6 @@
 # Secrets Manager = The Private Security Guard
 
-### The Key That Never Changed
+## The Key That Never Changed
 
 The CEO moved into the company's headquarters twelve years ago.
 
@@ -43,18 +43,17 @@ The company hired a private security guard.
 His job wasn't simply to keep the key safe.
 His job was to manage it.
 
-Every thirty days...
+The company configures a thirty-day rotation schedule.
 
 He installs a brand new lock.
 Creates a new master key.
 
-Quietly gives it to everyone still authorized.
+Updates the lock that accepts it.
 Verifies the new key works.
-Collects every old key.
-Destroys them.
+Marks the new key as current.
 
-The CEO never schedules it.
-The employees never remember it.
+The CEO does not coordinate each rotation by hand.
+Employees do not carry a permanent copy.
 
 The guard simply keeps the building secure.
 
@@ -85,11 +84,11 @@ SM --> DB
 
 ---
 
-## Nobody Memorizes The Key
+## Nobody Memorizes the Key
 
 Engineers don't write the password into their code.
 
-Containers don't keep copies forever.
+Containers retrieve the secret at runtime and may cache it for a controlled period.
 
 Lambda doesn't carry yesterday's password.
 
@@ -97,13 +96,13 @@ Whenever access is needed...
 
 They ask the guard.
 
-The guard hands them today's key.
+The guard returns the current secret to an authorized caller.
 
 Nothing more.
 
 ---
 
-## Changing The Locks
+## Changing the Locks
 
 Imagine an employee leaves the company.
 
@@ -117,11 +116,11 @@ With the security guard...
 
 When rotation is configured, the locks can change automatically.
 
-Old keys stop working.
+Secrets Manager coordinates a pending version, the downstream system update, testing, and promotion of the new current version.
 
-New keys immediately replace them.
+The previous version can be retained for recovery. Whether its credential still works depends on the rotation strategy and downstream system.
 
-Nobody has to organize the transition.
+Managed integrations can handle this coordination. Other secret types use a Lambda rotation function that the customer must configure and operate.
 
 Rotation isn't an emergency.
 
@@ -129,7 +128,7 @@ It's simply Tuesday.
 
 ---
 
-## The Guard Knows Everyone
+## The Guard Checks the Access List
 
 Not everyone receives the master key.
 
@@ -143,13 +142,13 @@ Cleaning staff receive none.
 
 Secrets Manager does the same thing.
 
-IAM decides who may retrieve a secret.
+IAM is central to deciding who may retrieve a secret. A secret resource policy, KMS permissions, and a VPC endpoint policy can also affect the request.
 
 The guard never hands keys to strangers.
 
 ---
 
-## The Building Never Notices
+## The Building Adopts the New Key
 
 Notice something.
 
@@ -159,9 +158,11 @@ Employees keep entering.
 
 Applications keep connecting.
 
-The database never cares the password changed.
+The database or service must be updated to accept the rotated credential.
 
-The guard quietly coordinated everything before anyone arrived for work.
+Applications must refresh cached values and retry safely when a credential changes.
+
+When rotation and retrieval are configured correctly, the transition can happen without a manual credential rollout.
 
 Good security should feel boring.
 
@@ -171,7 +172,15 @@ Good security should feel boring.
 
 > **Problem:** Applications need passwords, API keys, and credentials.
 > **Pain:** Humans rarely rotate them, leaving long-lived secrets exposed.
-> **AWS Solution:** Store credentials in Secrets Manager, retrieve them at runtime, and configure rotation when the downstream system supports it.
+> **AWS solution:** Store credentials in Secrets Manager, retrieve them at runtime, and configure managed or Lambda-based rotation for the downstream system.
+
+---
+
+## Knife Cut
+
+Parameter Store remembers a value.
+
+> **Secrets Manager manages a credential.**
 
 ---
 
@@ -189,23 +198,23 @@ API keys spread through source code.
 
 Nobody remembered to rotate credentials.
 
-Secrets Manager wasn't built to store passwords.
+Secrets Manager was not built merely to store passwords.
 
-It was built to manage them.
+It was built to manage secrets throughout their lifecycle.
 
 ---
 
-## The Guard Doesn't Store Documents
+## The Guard Is Not the Filing Cabinet
 
-A filing cabinet stores information.
+A filing cabinet organizes information.
 
-The security guard protects access.
+The security guard stores sensitive credentials and manages their controlled lifecycle.
 
-That difference explains why AWS built two different services.
+That difference explains why AWS provides two related services.
 
-Parameter Store remembers.
+Parameter Store organizes configuration, including encrypted values.
 
-Secrets Manager protects.
+Secrets Manager stores encrypted secrets and adds lifecycle capabilities such as configured rotation.
 
 ---
 
@@ -214,17 +223,18 @@ Secrets Manager protects.
 ### What Actually Just Happened
 
 | In the story | In Secrets Manager | What it actually means |
-|---|---|---|
+| --- | --- | --- |
 | Private security guard | Secrets Manager | Managed secret lifecycle |
-| Master key | Secret | Password, API key, token, credential |
-| Access list | IAM | Authorization |
-| Changing every lock | Automatic Rotation | Secret rotation |
-| New master key | New Secret Version | Updated credential |
-| Destroying old keys | Previous version retired | Old credentials invalidated |
-| Employees asking the guard | GetSecretValue | Applications retrieve secrets |
-| Building continues operating | Transparent rotation | Applications continue working with new credentials |
+| Master key | Secret | Password, API key, token, or credential |
+| Access list | IAM and resource policies | Authorization to retrieve the secret |
+| Scheduled lock change | Configured rotation | Managed or Lambda-based secret rotation |
+| New master key | New secret version | Updated credential begins as pending |
+| Tested key becomes current | `AWSCURRENT` | Promoted version returned by default |
+| Previous key retained | `AWSPREVIOUS` | Prior version retained; downstream validity varies |
+| Employees asking the guard | `GetSecretValue` | Applications retrieve secrets at runtime |
+| Building adopts the new key | Coordinated rotation | Downstream system and application retrieval must be configured correctly |
 
-Applications never remembered the password.
+Applications did not hardcode the password.
 
 They simply trusted the guard.
 
@@ -236,10 +246,13 @@ The security guard simplifies a few things.
 
 Real secret rotation often requires a Lambda function that updates the downstream system, such as a database password, before marking the new secret as current.
 
+Lambda-based rotation moves through four steps: create a pending version, update the downstream system, test the pending credential, and finish by moving `AWSCURRENT`. Secrets Manager normally labels the prior version `AWSPREVIOUS`.
+
+Some service-managed secrets support managed rotation without a customer-managed Lambda function.
+
 Rotation is not enabled merely by storing a secret. Applications retrieve secrets and commonly cache them; Secrets Manager does not push every new value into running application memory.
 
-Secrets Manager doesn't decide who gets access.
-IAM does.
+IAM is central to deciding who gets access, but a secret resource policy, KMS permissions, and VPC endpoint policy can further shape the decision.
 
 Finally, Secrets Manager can store many kinds of secrets.
 Passwords.
@@ -250,3 +263,19 @@ Certificates.
 The story focuses on one master key because it illustrates the service's true purpose:
 
 Managing the lifecycle of sensitive credentials, not merely storing them.
+
+---
+
+## The Last Bite
+
+Applications should not memorize long-lived credentials.
+
+They should ask an authorized guard for the secret they need now.
+
+---
+
+**Next section:** _The Wand Chooses the Wizard_
+
+Identity and security determine who may enter, which role they wear, and how sensitive values stay protected.
+
+Next, we will move into compute and let each workload choose the worker that fits it.

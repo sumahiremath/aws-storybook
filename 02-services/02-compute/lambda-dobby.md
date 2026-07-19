@@ -222,3 +222,11 @@ Dobby crosses wards with no visible cost. Lambda does not. VPC attachment brings
 The story explains the boundary.
 
 It does not model the cost.
+
+---
+
+## The Last Bite
+
+Do not keep a server waiting for occasional, bounded work.
+
+Let the event summon the compute when the work arrives.

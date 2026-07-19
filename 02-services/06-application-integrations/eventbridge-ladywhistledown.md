@@ -305,3 +305,11 @@ _Lady Whistledown was always the one narrator willing to step outside her own st
 **Not every rule reacts to a whisper.** Everything in this story starts with something happening. But EventBridge also supports Scheduled Rules — rules that fire on a timer, whether or not any event occurred at all. There's no ballroom equivalent of "check the treasury every Sunday at noon, whisper or no whisper." That's a real gap in the metaphor, not a simplification of one — the story's premise is reactive, and this feature isn't.
 
 _Use the story to build the intuition. Use this note to know exactly where the intuition stops._
+
+---
+
+## The Last Bite
+
+Publish the fact once.
+
+Let interested systems decide how to react without teaching the producer who they are.

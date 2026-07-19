@@ -76,11 +76,19 @@ The guide smiled.
 
 ---
 
-**Knife Cut**
+## Knife Cut
 
 AWS isn't a collection of services.
 
 It's a country built from twenty years of engineering lessons.
+
+---
+
+## The Last Bite
+
+Do not memorize the skyline.
+
+Learn which human problem caused each department to be built.
 
 ---
 
