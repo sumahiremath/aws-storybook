@@ -230,3 +230,9 @@ It does not model the cost.
 Do not keep a server waiting for occasional, bounded work.
 
 Let the event summon the compute when the work arrives.
+
+---
+
+**Series close:** *Most compute lives somewhere. Lambda is summoned.*
+
+The boba shops taught provisioned machines, fleets, traffic, packaged applications, orchestration, and managed container capacity. Lambda changes the model: no shop is kept waiting for the next bounded event.
