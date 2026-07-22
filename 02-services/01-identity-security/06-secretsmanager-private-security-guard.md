@@ -135,9 +135,7 @@ Not everyone receives the master key.
 The guard checks the access list first.
 
 Executives receive one key.
-
 Finance receives another.
-
 Cleaning staff receive none.
 
 Secrets Manager does the same thing.
@@ -153,9 +151,7 @@ The guard never hands keys to strangers.
 Notice something.
 
 The CEO keeps working.
-
 Employees keep entering.
-
 Applications keep connecting.
 
 The database or service must be updated to accept the rotated credential.
@@ -193,9 +189,7 @@ That wasn't the problem.
 The problem was operational.
 
 Passwords lived forever.
-
 API keys spread through source code.
-
 Nobody remembered to rotate credentials.
 
 Secrets Manager was not built merely to store passwords.

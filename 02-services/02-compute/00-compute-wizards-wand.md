@@ -119,7 +119,7 @@ Every service exists because it solves a different problem.
 
 > **Problem:** Modern applications have very different compute requirements.
 > **Pain:** Picking compute based on popularity instead of workload leads to unnecessary cost, complexity, or operational overhead.
-> **AWS Solution:** Start with the work. Let the workload choose the compute service that fits it best.
+> **AWS solution:** Start with the work. Let the workload choose the compute service that fits it best.
 
 ---
 
@@ -191,3 +191,9 @@ Like Ollivander said...
 There is no universally best compute service.
 
 The workload chooses by revealing what it needs.
+
+---
+
+**Next chapter:** *EC2: The Boba Shop That Stays Open*
+
+The first wand is the one that gives you the most familiar kind of compute: a provisioned machine you control.
