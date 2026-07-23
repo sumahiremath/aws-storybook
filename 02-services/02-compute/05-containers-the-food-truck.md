@@ -397,7 +397,7 @@ They package the application once and let it run consistently wherever a compati
 
 ---
 
-**Next chapter:** _Amazon ECS: The Food Truck Festival Coordinator_
+**Next chapter:** *Amazon ECS: The Operations Manager Behind Your Food Truck Festival*
 
 One food truck is useful.
 

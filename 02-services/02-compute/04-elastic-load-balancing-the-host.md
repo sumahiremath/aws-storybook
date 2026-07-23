@@ -148,4 +148,10 @@ Elastic Load Balancing does the same thing for applications.
 
 It gives every customer one destination while ensuring each request reaches a healthy backend.
 
-**Next chapter:** _Route 53: Finding the Right Boba Shop_
+---
+
+**Next chapter:** *Containers: The Food Truck That Carries the Kitchen*
+
+Elastic Load Balancing directs customers across a fleet of healthy shops.
+
+Containers ask what happens when the kitchen itself needs to become portable.

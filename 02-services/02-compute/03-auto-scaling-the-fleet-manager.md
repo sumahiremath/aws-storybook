@@ -385,7 +385,7 @@ That is the promise of Auto Scaling.
 
 ---
 
-**Next chapter:** _Elastic Load Balancing: The Host Who Seats Every Customer_
+**Next chapter:** *Elastic Load Balancing: The Host Who Seats Every Customer*
 
 Auto Scaling decides **how many** shops should exist.
 
