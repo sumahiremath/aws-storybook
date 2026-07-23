@@ -186,7 +186,7 @@ If ECS needs thirty tasks but your EC2 cluster only has room for twenty-four, th
 
 When ECS capacity-provider managed scaling is configured, the associated Auto Scaling group can launch another EC2 instance.
 
-As soon as it joins the cluster, ECS places the remaining containers.
+Once the new capacity registers and becomes available, ECS can place the remaining tasks.
 
 Each service manages a different layer.
 
@@ -292,8 +292,8 @@ That continuous feedback loop is what orchestration really means.
 
 ---
 
-**Next chapter:** *AWS Fargate: Bring the Food Truck, Skip the Parking Lot*
+**Next chapter:** *Task Definitions: The Operating Manual Every Food Truck Follows*
 
 ECS coordinates the food trucks.
 
-Fargate removes the need to manage the parking lot underneath them.
+A task definition gives ECS the operating manual for how each truck should run.

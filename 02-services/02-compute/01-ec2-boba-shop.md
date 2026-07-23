@@ -441,29 +441,18 @@ The customer still operates the workload inside it.
 
 ## What AWS Manages and What You Manage
 
-|Responsibility|Boba story|Owner|
-
-|---|---|---|
-
-|Physical data center|The land and building infrastructure|AWS|
-
-|Physical servers|The underlying building structure and utilities|AWS|
-
-|Virtualization layer|Dividing the building into rentable shops|AWS|
-
-|EC2 instance selection|Choosing the size of the shop|Customer|
-
-|Guest operating system|Managing the shop’s internal systems|Customer|
-
-|OS and application patches|Maintaining the equipment and procedures|Customer|
-
-|Application deployment|Installing the boba operation|Customer|
-
-|Security-group rules|Deciding which network doors are open|Customer|
-
-|Data protection|Protecting recipes, records, and inventory|Customer|
-
-|Monitoring and scaling|Watching demand and adding capacity|Customer|
+| Responsibility             | Boba story                                      | Owner    |
+| -------------------------- | ----------------------------------------------- | -------- |
+| Physical data center       | The land and building infrastructure            | AWS      |
+| Physical servers           | The underlying building structure and utilities | AWS      |
+| Virtualization layer       | Dividing the building into rentable shops       | AWS      |
+| EC2 instance selection     | Choosing the size of the shop                   | Customer |
+| Guest operating system     | Managing the shop’s internal systems            | Customer |
+| OS and application patches | Maintaining the equipment and procedures        | Customer |
+| Application deployment     | Installing the boba operation                   | Customer |
+| Security-group rules       | Deciding which network doors are open           | Customer |
+| Data protection            | Protecting recipes, records, and inventory      | Customer |
+| Monitoring and scaling     | Watching demand and adding capacity             | Customer |
 
 EC2 gives you control because some applications need control.
 
@@ -606,7 +595,7 @@ AWS provides the underlying building, but the shop remains ready because you cho
 
 ---
 
-****Next chapter:**** __AMI: Bottle the Blueprint, Not the Business__
+**Next chapter:** *AMI: Bottle the Shop Setup, Not the Business*
 
 One boba shop gives you compute.
 

@@ -855,7 +855,7 @@ The fleet comes next.
 
 ---
 
-**Next chapter:** _Auto Scaling: When the Boba Trucks Roll In_
+**Next chapter:** *Auto Scaling: The Fleet Manager Who Opens Boba Shops Before the Line Gets Too Long*
 
 The AMI gives every truck the same approved operating package.
 
