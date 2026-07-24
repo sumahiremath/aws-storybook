@@ -82,22 +82,13 @@ Containers share the host operating system kernel instead of bringing an entire 
 
 ## Why Not Another Shop?
 
-An EC2 instance is a permanent boba shop.
+An EC2 instance gives the business an entire shop.
 
-It contains:
+A container carries only the application kitchen.
 
-- the building
-- the kitchen
-- the staff
-- the operating systems
+Many containers can run on the same host because they share the host operating system kernel.
 
-A container keeps only the kitchen.
-
-Many food trucks can park in the same lot.
-
-They share the surrounding infrastructure.
-
-This makes containers lightweight and fast to start.
+That smaller launch unit makes containers lighter and faster to start than full virtual machines.
 
 ---
 
@@ -129,33 +120,42 @@ Most developers build and package container images with tools such as Docker. AW
 
 Yesterday, the boba company standardized its permanent shops.
 
-Every new location started from the same approved operating package.
+Every new location started from the same approved machine image.
 
-That package was an **AMI**.
+That was an **AMI**.
 
-Today, the company is building food trucks instead.
+Today, the company wants the kitchen itself to travel.
 
-The truck does not need an entire building.
+That is a different unit.
 
-It only needs the kitchen.
+### AMI: Rebuild the Whole Shop
 
-### AMI
+An AMI describes how to launch an EC2 instance.
 
-An AMI describes how to create an entire shop.
+In the story, it is the blueprint for an entire shop.
 
-It includes the machine image and launch-time storage mappings needed to start an EC2 instance. The image can contain:
+It can include:
 
 - the operating system
 - installed software
 - the application runtime
 - monitoring agents
 - startup services
+- application code
 
-The AMI prepares the whole building to open.
+The important point is not how much application work has already been done.
 
-### Container Image
+The important point is what gets launched.
 
-A container image describes the portable kitchen.
+An AMI launches a machine.
+
+The whole shop opens.
+
+### Container Image: Carry the Kitchen
+
+A container image packages the application and the files it needs to run.
+
+In the story, it is the portable kitchen inside the food truck.
 
 It typically contains:
 
@@ -164,35 +164,33 @@ It typically contains:
 - the runtime
 - the framework
 - supporting binaries
+- the startup command
 
-It expects the container platform and host to provide:
+But the kitchen does not create its own parking lot.
+
+The running container still depends on a compatible host for:
 
 - the operating system kernel
+- compute
 - networking
-- storage
-- compute resources
+- permissions
+- configured storage
 
-The food truck already knows how to make boba.
+The image carries the kitchen.
 
-It simply parks somewhere and starts serving.
+The host provides the ground beneath it.
 
 ### Side by Side
 
 | AMI | Container image |
 |---|---|
-| Blueprint for the shop | Blueprint for the kitchen |
-| Contains a complete operating system | Shares the host operating system kernel |
-| Launches an EC2 instance | Starts a container |
-| Typically larger | Typically smaller |
-| Typically slower to launch | Typically faster to start |
+| Blueprint for the whole shop | Blueprint for the portable kitchen |
+| Launches an EC2 virtual machine | Starts an application process as a container |
+| Includes a full operating system | Shares the host operating system kernel |
+| Usually larger | Usually smaller |
+| Usually slower to launch | Usually faster to start |
 
-> **An AMI packages an entire shop. A container image packages only the kitchen.**
-
-With EC2, AWS gives you the prepared building and infrastructure for a kitchen. The AMI decides which appliances, counters, operating system, and base setup are already there. Depending on how the AMI was built, you may still need to bring your recipe and ingredients: application code, release scripts, configuration, and a deployment process.
-
-A container flips the emphasis. The application is already packed like a ready-made meal box. The code, runtime, dependencies, and startup command travel together. When the container starts, you are not preparing an entire kitchen from scratch. You are opening the box and serving the meal.
-
----
+> **An AMI packages the machine. A container image packages the application environment that runs on a compatible host.**
 
 ## How It Works
 
@@ -355,8 +353,7 @@ Choose the tool that matches the workload.
 
 ## Knife Cut
 
-> **An AMI prepares the kitchen.**  
-> **A container image prepares the meal.**
+> **An AMI launches the machine. A container image launches the application on a compatible host.**
 
 ---
 
@@ -375,11 +372,13 @@ Choose the tool that matches the workload.
 
 ## A Note From the Author
 
-The food truck is a memory aid, not a complete container security or persistence model. An AMI can contain application code and even a fully deployable application; it is not limited to the operating system and base tools. The important boundary is the launch unit: an AMI defines a machine image used to launch an EC2 instance, while a container image packages an application to run as a container on a compatible host.
+The food truck is a memory aid, not a complete container runtime model.
 
-A container image packages application files and dependencies, but the running container still depends on a compatible host kernel, a container runtime, networking, permissions, and configured storage.
+An AMI can include a fully deployable application. A container image can also be large and complex. The defining distinction is the launch unit: an AMI launches a virtual machine with its own operating system, while a container image starts an application process that shares the host kernel.
 
-Containers also receive a writable layer while running. That layer is generally disposable: replacing the container can discard changes stored only there. Production applications should place durable business data in persistent storage or managed services appropriate to the workload.
+A running container still depends on a compatible host, container runtime, networking, permissions, and configured storage.
+
+Containers also receive a writable layer while running. That layer is generally disposable. Durable business data belongs in persistent storage or a managed data service, not only inside the container.
 
 - [AWS container services documentation](https://docs.aws.amazon.com/containers/)
 

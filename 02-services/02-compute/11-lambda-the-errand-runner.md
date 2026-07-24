@@ -117,15 +117,95 @@ One invocation does not always mean one record. Depending on the event source an
 
 ---
 
-## Real-World Limits
+## When the Errand Runner Meets the Real World
 
-The errand runner is built for short assignments.
+One event calls a runner.
 
-A single Lambda invocation can run for a maximum of 15 minutes. Long-running jobs and large finite backlogs may fit AWS Batch better, while permanently running customer-facing services belong on service-oriented compute such as ECS.
+Then ten.
 
-The runner may also need a moment to get ready. When Lambda creates a new execution environment, the invocation can experience **cold-start latency** before the function begins processing the event.
+Then a hundred.
 
-Lambda is strongest when work is short, event-driven, and able to finish within one invocation.
+One runner cannot answer a hundred calls at the same time.
+
+So Lambda creates more execution environments and runs multiple invocations in parallel.
+
+That parallel work is called **concurrency**.
+
+Each AWS Region has a shared pool of concurrency. When the available pool is exhausted, Lambda throttles new invocations until capacity becomes available.
+
+### Save Some Runners for the Work That Cannot Wait
+
+Most errands can use the shared pool.
+
+Some cannot.
+
+Imagine payment confirmations competing with thumbnail generation.
+
+If thumbnails claim every available runner, payment confirmations wait behind them.
+
+**Reserved concurrency** draws a fence around part of the pool for one function.
+
+Other functions cannot use that reserved capacity.
+
+The protected function cannot grow beyond the fence either.
+
+Reserved concurrency protects critical work from noisy neighbors while also limiting how much concurrency that function can consume.
+
+### Have the Runner Ready Before the Call
+
+A new runner does not always begin instantly.
+
+Lambda may need to prepare a new execution environment before the function can run.
+
+That preparation delay is a **cold start**.
+
+Lambda can reuse an existing environment for later invocations, but reuse is never guaranteed.
+
+For ordinary errands, a brief preparation delay may be acceptable.
+
+For a customer waiting on a checkout screen, it may not be.
+
+**Provisioned concurrency** keeps a chosen number of execution environments initialized before the request arrives.
+
+The runner is already at the door.
+
+No scramble for shoes.
+
+No search for the address.
+
+The work can begin with less startup delay.
+
+But readiness has a price. Provisioned concurrency is billed while that prepared capacity is available, even when it is waiting for work.
+
+### Memory Buys More Than Memory
+
+Some errands are easy.
+
+Some involve resizing a giant photograph, parsing a large file, or calculating thousands of results.
+
+In Lambda, increasing memory also increases the CPU and other resources available to the function.
+
+A larger allocation costs more for every millisecond it runs.
+
+But a faster function may finish sooner.
+
+So the cheapest configuration is not always the smallest one.
+
+Lambda cost is shaped by how often the function is invoked, how much memory it receives, and how long each invocation runs.
+
+### Every Errand Has a Deadline
+
+The errand runner is built for bounded work.
+
+A single Lambda invocation can run for a maximum of 15 minutes.
+
+After that, the assignment has outgrown the runner.
+
+A large finite job may belong in AWS Batch.
+
+A continuously running service may belong in ECS.
+
+Lambda is strongest when work arrives as an event, can scale through independent invocations, and finishes within a clear boundary.
 
 ---
 
@@ -193,6 +273,11 @@ Consider another compute service when:
 | Several order slips | Record batch | Multiple source records in one invocation |
 | Runner getting ready | Cold start | Initialization of a new execution environment |
 | Runner leaving | Invocation completion | Execution ends after success, failure, or timeout |
+| Runners working simultaneously | Concurrency | Number of invocations executing in parallel |
+| Runners inside a protected fence | Reserved concurrency | Capacity reserved for one function and a cap on that function's concurrency |
+| Runners already dressed and waiting | Provisioned concurrency | Pre-initialized environments that eliminate cold start |
+| Size of the assignment kit | Memory allocation | Memory configured for the function; CPU and other resources scale with it |
+| Calls, capacity, and time | Requests + duration at allocated memory | Major drivers of Lambda function cost |
 
 ---
 
@@ -200,9 +285,14 @@ Consider another compute service when:
 
 The errand runner makes every call sound immediate, isolated, and successful. Lambda invocation, retry, batching, ordering, and failure behavior depend on the event source and invocation type. Applications must be designed for duplicate processing and partial failures where those behaviors are possible.
 
-Lambda may reuse an execution environment, but reuse is not guaranteed. Teams still manage function code, IAM permissions, dependencies, configuration, observability, concurrency, error handling, and downstream capacity.
+Lambda may reuse an execution environment, but reuse is not guaranteed. Initialization code outside the handler runs once per new environment, not once per invocation — which is both a performance opportunity (cache clients outside the handler) and a source of state-related bugs if initialization side effects are assumed to be per-invocation.
+
+Concurrency is managed within an AWS account and Region. A burst in one function can consume shared concurrency and throttle other functions. Reserved concurrency isolates capacity for a function and caps how far that function can scale. Provisioned concurrency pre-initializes environments to reduce cold-start latency, with separate charges for keeping that capacity ready.
+
+The 15-minute limit is absolute. Lambda is not the right compute model for workflows that may run longer — Step Functions, ECS tasks, or Batch jobs are better fits depending on the shape of the work.
 
 - [AWS Lambda invocation methods](https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html)
+- [Lambda concurrency](https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html)
 - [Lambda quotas](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
 - [Using Lambda with Amazon SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 
