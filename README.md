@@ -2,21 +2,21 @@
 
 **By Suma Manjunath**
 
-> Learn AWS the way systems are actually built: a business needs something, the first reasonable approach reaches a limit, and an engineering decision becomes necessary.
+> A narrative learning experience for engineers who want to understand AWS the way systems are actually built: a business needs something, the first reasonable approach reaches a limit, and an engineering decision becomes necessary.
 
-AWS Storybook is a narrative-first learning repository for engineers who want to understand AWS services, not merely recognize their names.
+AWS Storybook teaches AWS through operational stories, not service memorization.
 
 It does not begin with a product definition. It begins with a business goal: launch online ordering, protect a customer account, survive a promotion, release a change safely, or recover an incomplete order. The technical constraint arrives next. AWS becomes useful because the situation earns it.
 
-The aim is a model a reader can retell accurately in a design review, an incident, or a whiteboard conversation.
+The goal is a mental model a reader can retell accurately in a design review, an incident, a tradeoff discussion, or a whiteboard conversation.
 
 > **Project status:** This repository contains the current published edition of AWS Storybook. Its stories, technical details, and navigation will continue to evolve as AWS and the book grow.
 
-## What makes this different
+## Why this exists
 
-Most cloud material starts with a service and lists its features.
+Most cloud learning material starts with a service and lists its features.
 
-AWS Storybook starts here:
+AWS Storybook starts with the moment before the service becomes obvious:
 
 ```text
 Business goal
@@ -30,17 +30,28 @@ Technical decision
 AWS service and its real responsibilities
 ```
 
-Every article makes the boundary explicit:
+Each article makes the boundary explicit:
 
 - what problem the service solves;
 - what the developer still owns;
 - what can fail, duplicate, throttle, become stale, or cost money;
 - what evidence proves the system is healthy or explains why it is not;
-- where the analogy helps—and where it stops being reliable.
+- where the analogy helps, and where it stops being reliable.
 
 This is not documentation painted with a metaphor. The story must make the architecture necessary.
 
-## The repository has three layers
+## Who this is for
+
+AWS Storybook is for:
+
+- engineers who want durable mental models before reaching for documentation, code, or a console;
+- cloud learners who are tired of memorizing service names without understanding when they matter;
+- technical leaders, mentors, and study groups who need better ways to explain architectural tradeoffs;
+- builders who want AWS concepts tied to production behavior, ownership, failure, and cost.
+
+It is not a shortcut around hands-on work. It is the connective tissue that helps documentation, labs, production reviews, and operational ownership make sense together.
+
+## Repository map
 
 ```text
 01-infrastructure/   Understand the cloud before choosing a service
@@ -49,15 +60,15 @@ This is not documentation painted with a metaphor. The story must make the archi
                      when it expires, and when complexity should be removed
 ```
 
-### 01 — Infrastructure
+### 01 - Infrastructure
 
 The foundations: what AWS is, how managed services divide responsibility, how events change systems, and how to think before selecting technology.
 
-### 02 — Services
+### 02 - Services
 
 The service collection teaches the contracts that make an application work in production. Its recurring worlds are **Bits Boba** for compute and **Byte Burger** for customer-facing systems, operations, and failure.
 
-The sections below form the published Services collection. Each one builds a practical mental model around the decisions, responsibilities, and failure modes engineers encounter when using AWS.
+Each section builds a practical mental model around the decisions, responsibilities, and failure modes engineers encounter when using AWS.
 
 | Section | Central question |
 | --- | --- |
@@ -74,9 +85,9 @@ The sections below form the published Services collection. Each one builds a pra
 
 The final service capstone follows Byte Burger through a Saturday promotion. It connects security, APIs, Lambda, queues, databases, caching, deployment, observability, networking, retries, and recovery into one customer journey.
 
-### 03 — Architecture
+### 03 - Architecture
 
-`03-architecture` is the published Architecture collection. It is not a service catalogue and not a promise that every successful company must become microservices.
+`03-architecture` is the published Architecture collection. It is not a service catalogue, and it is not an argument that every successful company must become microservices.
 
 It follows Byte Burger from a small local restaurant toward a multinational business, asking harder questions:
 
@@ -93,23 +104,17 @@ The working principle is simple:
 
 ## How an article works
 
-Every article opens with **The Business Goal**. The reader meets the person, team, or business outcome first—not an AWS definition.
+Every article opens with **The Business Goal**. The reader meets the person, team, or business outcome first, not an AWS definition.
 
 The rest of the article typically includes:
 
-- **The Story** — a reasonable approach and the pressure that exposes its limit;
-- **Meet the AWS Service** — the smallest accurate explanation of what becomes necessary;
-- **How It Works** — the developer-facing mechanics, permissions, lifecycle, failure behavior, and trade-offs that matter;
-- **The Masthead** — a precise story-to-AWS mapping;
-- **A Note From the Author** — where the analogy breaks and what production still requires;
-- **The Last Bite** — the memorable lesson;
-- **Next chapter** — the consequence that opens the next question.
-
-## What this is—and is not
-
-AWS Storybook is for engineers and cloud learners who want a durable mental model before they reach for documentation, code, or a console.
-
-It is not a replacement for hands-on practice, official AWS documentation, threat modeling, production review, or operational ownership. It is the connective tissue that helps those things make sense together.
+- **The Story**: a reasonable approach and the pressure that exposes its limit;
+- **Meet the AWS Service**: the smallest accurate explanation of what becomes necessary;
+- **How It Works**: the developer-facing mechanics, permissions, lifecycle, failure behavior, and tradeoffs that matter;
+- **The Masthead**: a precise story-to-AWS mapping;
+- **A Note From the Author**: where the analogy breaks and what production still requires;
+- **The Last Bite**: the memorable lesson;
+- **Next chapter**: the consequence that opens the next question.
 
 ## Start here
 
