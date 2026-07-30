@@ -32,11 +32,11 @@ AWS service and its real responsibilities
 
 Each article makes the boundary explicit:
 
-- what problem the service solves;
-- what the developer still owns;
-- what can fail, duplicate, throttle, become stale, or cost money;
-- what evidence proves the system is healthy or explains why it is not;
-- where the analogy helps, and where it stops being reliable.
+- What problem does the service solve?
+- What does the developer still own?
+- What can fail, duplicate, throttle, become stale, or cost money?
+- What evidence proves the system is healthy or explains why it is not?
+- Where does the analogy help, and where does it stop being reliable?
 
 This is not documentation painted with a metaphor. The story must make the architecture necessary.
 
@@ -66,7 +66,9 @@ The foundations: what AWS is, how managed services divide responsibility, how ev
 
 ### 02 - Services
 
-The service collection teaches the contracts that make an application work in production. Its recurring worlds are **Bits Boba** for compute and **Byte Burger** for customer-facing systems, operations, and failure.
+The service collection teaches the contracts that make an application work in production. Its recurring businesses are **Bits Boba** for compute and **Byte Burger** for customer-facing systems, operations, and failure.
+
+These businesses are used to make the engineering problem clear: what does Bits Boba or Byte Burger actually need? Other analogies appear when they make the story narration sharper, because some AWS concepts cannot be forced into one business metaphor without bending the truth.
 
 Each section builds a practical mental model around the decisions, responsibilities, and failure modes engineers encounter when using AWS.
 
