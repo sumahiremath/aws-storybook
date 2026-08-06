@@ -55,7 +55,9 @@ The foundations: what AWS is, how managed services divide responsibility, how ev
 
 ### 02 — Services
 
-The service collection teaches the contracts that make an application work in production. Its recurring worlds are **Bits Boba** for compute and **Byte Burger** for customer-facing systems, operations, and failure.
+The service collection teaches the contracts that make an application work in production. Its recurring worlds are **Bits Boba** for compute, **Mira's photography studio** for storage, and **Byte Burger** for customer-facing systems, operations, and failure.
+
+The photography studio is an intentional third world. Images naturally move from a fast workbench to shared files, object galleries, protected versions, and archives, making the changing job of data visible before the collection returns to Byte Burger's application truth.
 
 The sections below form the published Services collection. Each one builds a practical mental model around the decisions, responsibilities, and failure modes engineers encounter when using AWS.
 

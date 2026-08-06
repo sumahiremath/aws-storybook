@@ -65,7 +65,7 @@ There is no universal “fastest” configuration. Freshness, correctness, cost,
 
 ## The Masthead
 
-Byte Burger can now operate under pressure because every prior section has a role: identities protect it, compute runs it, storage and databases hold it, APIs and integrations move work through it, deployment changes it, and observability proves how it behaves.
+Observability connects the evidence from every system Byte Burger has built so far: identities protect it, compute runs it, storage and databases hold it, APIs and integrations move work through it, deployment changes it, and metrics, logs, traces, and audit history explain how it behaves.
 
 ## A Note From the Author
 
@@ -77,4 +77,4 @@ The mature system is not the one that never has an incident. It is the one that 
 
 **Next section:** *[Amazon VPC, Amazon Route 53, and Amazon CloudFront: Byte Burger's Perimeter](../09-networking/00-the-restaurant-perimeter.md)*
 
-The observability section is complete. Return to any earlier section with this final question: **how would we know this part of Byte Burger is failing, and what evidence would prove why?**
+Byte Burger can now explain what its systems are doing. The next failure asks a different question: can each request find the intended entrance and private path without exposing the kitchen?
